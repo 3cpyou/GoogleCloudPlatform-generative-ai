@@ -1,0 +1,2266 @@
+{
+  "database_id": "ad3sam-database",
+  "project_id": "ad3-sam",
+  "export_timestamp": "2025-09-06T16:28:37.308053",
+  "collections": {
+    "access_policies": [
+      {
+        "id": "automation_control_policy",
+        "data": {
+          "operations": [
+            "create_rules",
+            "modify_rules",
+            "disable_rules"
+          ],
+          "name": "Automation Rules Management",
+          "approval_required": true,
+          "allowed_roles": [
+            "admin"
+          ],
+          "testing_required": true
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "customer_data_policy",
+        "data": {
+          "restrictions": [
+            "no_personal_details_export",
+            "gdpr_compliance_required",
+            "purpose_limitation",
+            "data_minimization"
+          ],
+          "allowed_departments": [
+            "orders",
+            "cafe",
+            "management"
+          ],
+          "retention_period": 365,
+          "data_types": [
+            "customer_contacts",
+            "order_history",
+            "preferences"
+          ],
+          "allowed_roles": [
+            "admin",
+            "sales",
+            "customer_service"
+          ],
+          "name": "Customer Information Protection"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "domain_search_policy",
+        "data": {
+          "restrictions": [
+            "no_hr_confidential",
+            "no_financial_details_without_finance_role",
+            "audit_all_searches",
+            "respect_user_privacy_settings"
+          ],
+          "audit_required": true,
+          "allowed_operations": [
+            "search_all_emails",
+            "search_all_drives",
+            "view_calendar_summaries"
+          ],
+          "name": "Domain-wide Search Access",
+          "effective_date": "2025-08-30T10:10:05.170113",
+          "allowed_roles": [
+            "admin",
+            "manager"
+          ],
+          "description": "Controls who can search across all user data"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "financial_data_policy",
+        "data": {
+          "restrictions": [
+            "view_only_unless_finance_role",
+            "no_salary_information",
+            "audit_all_access"
+          ],
+          "allowed_departments": [
+            "accounts",
+            "management"
+          ],
+          "approval_required": false,
+          "data_types": [
+            "invoices",
+            "payments",
+            "vat_returns",
+            "profit_reports"
+          ],
+          "allowed_roles": [
+            "admin",
+            "finance"
+          ],
+          "name": "Financial Information Access"
+        },
+        "subcollections": {}
+      }
+    ],
+    "automation_rules": [
+      {
+        "id": "auto_file_invoices",
+        "data": {
+          "is_active": true,
+          "conditions": [
+            {
+              "subject_contains": [
+                "invoice",
+                "bill",
+                "payment",
+                "statement"
+              ]
+            },
+            {
+              "sender_domains": [
+                "suppliers",
+                "utilities",
+                "services"
+              ]
+            },
+            {
+              "has_pdf_attachment": true
+            }
+          ],
+          "description": "Automatically organize financial documents",
+          "actions": [
+            {
+              "extract_invoice_data": true
+            },
+            {
+              "file_in_drive": "/Finance/Invoices/{year}/{month}"
+            },
+            {
+              "create_task": "Review invoice from {sender}"
+            },
+            {
+              "notify": "accounts@lineagecoffee.com"
+            }
+          ],
+          "priority": "high",
+          "name": "Auto-file Invoices and Bills",
+          "trigger": "email_received"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "customer_order_processing",
+        "data": {
+          "is_active": true,
+          "conditions": [
+            {
+              "to_addresses": [
+                "orders@lineagecoffee.com"
+              ]
+            },
+            {
+              "subject_contains": [
+                "order",
+                "purchase",
+                "wholesale",
+                "quote"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "extract_order_details": true
+            },
+            {
+              "create_order_task": true
+            },
+            {
+              "send_acknowledgment": true
+            },
+            {
+              "check_inventory": true
+            }
+          ],
+          "priority": "high",
+          "name": "Process Customer Orders",
+          "trigger": "email_received"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "roasting_schedule_reminder",
+        "data": {
+          "schedule": "every day 06:00",
+          "is_active": true,
+          "actions": [
+            {
+              "check_inventory_levels": true
+            },
+            {
+              "generate_roasting_schedule": true
+            },
+            {
+              "notify": "coffee@lineagecoffee.com"
+            },
+            {
+              "update_production_calendar": true
+            }
+          ],
+          "conditions": [
+            {
+              "day_type": "business_day"
+            }
+          ],
+          "name": "Daily Roasting Schedule",
+          "trigger": "schedule"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "weekly_financial_summary",
+        "data": {
+          "schedule": "every friday 16:00",
+          "is_active": true,
+          "actions": [
+            {
+              "generate_sales_report": true
+            },
+            {
+              "calculate_weekly_profit": true
+            },
+            {
+              "review_outstanding_invoices": true
+            },
+            {
+              "email_summary_to": "craig@lineagecoffee.com"
+            }
+          ],
+          "name": "Weekly Financial Summary",
+          "trigger": "schedule"
+        },
+        "subcollections": {}
+      }
+    ],
+    "business_data": [
+      {
+        "id": "company_profile",
+        "data": {
+          "business_hours": {
+            "end": "17:00",
+            "start": "07:00",
+            "days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday"
+            ]
+          },
+          "target_markets": [
+            "retail",
+            "wholesale",
+            "online",
+            "corporate"
+          ],
+          "created_date": "2025-08-30T10:10:05.170113",
+          "timezone": "Africa/Johannesburg",
+          "vat_number": "4420275341",
+          "certifications": [
+            "organic",
+            "fairtrade",
+            "rainforest_alliance"
+          ],
+          "key_products": [
+            "single_origin_coffee",
+            "blends",
+            "espresso",
+            "cold_brew"
+          ],
+          "founded": "2016",
+          "address": "Shop 11, The Hillcrest Center, 38 Old Main Road, Hillcrest, 3650",
+          "domain": "lineagecoffee.com",
+          "business_type": "specialty_coffee_roaster",
+          "registration_number": "2016/436262/07",
+          "company_name": "Lineage Coffee"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "departments",
+        "data": {
+          "orders": {
+            "budget_code": "ORD",
+            "head": "orders@lineagecoffee.com"
+          },
+          "technology": {
+            "budget_code": "TEC",
+            "head": "tech@lineagecoffee.com"
+          },
+          "finance": {
+            "budget_code": "FIN",
+            "head": "accounts@lineagecoffee.com"
+          },
+          "management": {
+            "budget_code": "MGT",
+            "head": "craig@lineagecoffee.com"
+          },
+          "production": {
+            "budget_code": "PRD",
+            "head": "coffee@lineagecoffee.com"
+          },
+          "retail": {
+            "budget_code": "RTL",
+            "head": "cafe@lineagecoffee.com"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "key_customers",
+        "data": {
+          "wholesale": [
+            "restaurants",
+            "hotels",
+            "corporate_offices",
+            "independent_cafes"
+          ],
+          "corporate": [
+            "office_deliveries",
+            "event_catering",
+            "gift_packages"
+          ],
+          "retail": [
+            "walk_in_customers",
+            "online_orders",
+            "subscription_customers"
+          ]
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "suppliers",
+        "data": {
+          "green_coffee_suppliers": [
+            "origin_coffee_imports",
+            "sa_specialty_coffee",
+            "direct_trade_sources"
+          ],
+          "packaging_suppliers": [
+            "sustainable_packaging_sa",
+            "coffee_bag_specialists"
+          ],
+          "equipment_suppliers": [
+            "probat_roasters",
+            "la_marzocco",
+            "coffee_equipment_sa"
+          ]
+        },
+        "subcollections": {}
+      }
+    ],
+    "conversation_analytics": [
+      {
+        "id": "5rhZbCl1b0bcGo5t3JRS",
+        "data": {
+          "stored_at": "2025-08-31T08:19:54.983586",
+          "user_id": "craig@lineagecoffee.com",
+          "context": {
+            "suggested_search": "Would you like me to search your emails and Drive for this information?",
+            "clarification_reason": "low_confidence",
+            "user_message": "Why is 5 x 5",
+            "timestamp": "2025-08-31T08:19:54.983526",
+            "interaction_type": "clarification_needed",
+            "user_intent": null,
+            "pending_action": "user_confirmation",
+            "follow_up_expected": true,
+            "entities_mentioned": {
+              "business_terms": [],
+              "topics": [],
+              "time_references": [],
+              "people": []
+            },
+            "tool_used": null,
+            "conversation_state": "awaiting_clarification"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "auQymXqB55UGw9tQ6fMv",
+        "data": {
+          "stored_at": "2025-08-31T09:41:09.433185",
+          "user_id": "craig@lineagecoffee.com",
+          "context": {
+            "suggested_search": "Would you like me to search your emails and Drive for this information?",
+            "clarification_reason": "low_confidence",
+            "user_message": "Latest email from julie",
+            "timestamp": "2025-08-31T09:41:09.433116",
+            "interaction_type": "clarification_needed",
+            "user_intent": null,
+            "pending_action": "user_confirmation",
+            "follow_up_expected": true,
+            "entities_mentioned": {
+              "business_terms": [],
+              "topics": [],
+              "time_references": [
+                "latest"
+              ],
+              "people": [
+                "julie"
+              ]
+            },
+            "tool_used": null,
+            "conversation_state": "awaiting_clarification"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "bkHSMDIx9eRGquijUZln",
+        "data": {
+          "stored_at": "2025-08-30T20:52:11.363422",
+          "user_id": "craig@lineagecoffee.com",
+          "context": {
+            "suggested_search": "Would you like me to search your emails and Drive for this information?",
+            "clarification_reason": "low_confidence",
+            "user_message": "When was the last time I got an email from oliver",
+            "timestamp": "2025-08-30T20:52:11.363355",
+            "interaction_type": "clarification_needed",
+            "user_intent": null,
+            "pending_action": "user_confirmation",
+            "follow_up_expected": true,
+            "entities_mentioned": {
+              "business_terms": [],
+              "topics": [],
+              "time_references": [],
+              "people": [
+                "oliver"
+              ]
+            },
+            "tool_used": null,
+            "conversation_state": "awaiting_clarification"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "jUZAZtWiLa150d29rBlM",
+        "data": {
+          "stored_at": "2025-08-30T10:10:05.170113",
+          "user_id": "craig@lineagecoffee.com",
+          "context": {
+            "follow_up_expected": false,
+            "entities_mentioned": {
+              "business_terms": [],
+              "topics": [
+                "testing",
+                "system"
+              ],
+              "time_references": [],
+              "people": []
+            },
+            "user_message": "Hello, I'm testing the system",
+            "interaction_type": "greeting",
+            "timestamp": "2025-08-30T10:10:05.170113",
+            "conversation_state": "conversation_started",
+            "pending_action": null
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "n5B6EcmYNtgZmO9Va7qW",
+        "data": {
+          "stored_at": "2025-08-30T20:51:36.199681",
+          "user_id": "craig@lineagecoffee.com",
+          "context": {
+            "suggested_search": "Would you like me to search your emails and Drive for this information?",
+            "clarification_reason": "low_confidence",
+            "user_message": "Hi sam",
+            "timestamp": "2025-08-30T20:51:36.199614",
+            "interaction_type": "clarification_needed",
+            "user_intent": null,
+            "pending_action": "user_confirmation",
+            "follow_up_expected": true,
+            "entities_mentioned": {
+              "business_terms": [],
+              "topics": [],
+              "time_references": [],
+              "people": []
+            },
+            "tool_used": null,
+            "conversation_state": "awaiting_clarification"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "u8wCzi5r615ubCxAqwkT",
+        "data": {
+          "stored_at": "2025-08-31T09:41:07.040849",
+          "user_id": "craig@lineagecoffee.com",
+          "context": {
+            "suggested_search": "Would you like me to search your emails and Drive for this information?",
+            "clarification_reason": "low_confidence",
+            "user_message": "What is 5 plus 4",
+            "timestamp": "2025-08-31T09:41:07.040581",
+            "interaction_type": "clarification_needed",
+            "user_intent": null,
+            "pending_action": "user_confirmation",
+            "follow_up_expected": true,
+            "entities_mentioned": {
+              "business_terms": [],
+              "topics": [],
+              "time_references": [],
+              "people": []
+            },
+            "tool_used": null,
+            "conversation_state": "awaiting_clarification"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "w3JHaivvZ9Q7NZFfV9eK",
+        "data": {
+          "stored_at": "2025-08-30T20:51:53.200455",
+          "user_id": "craig@lineagecoffee.com",
+          "context": {
+            "suggested_search": "Would you like me to search your emails and Drive for this information?",
+            "clarification_reason": "low_confidence",
+            "user_message": "What is 40 plays 55",
+            "timestamp": "2025-08-30T20:51:53.200396",
+            "interaction_type": "clarification_needed",
+            "user_intent": null,
+            "pending_action": "user_confirmation",
+            "follow_up_expected": true,
+            "entities_mentioned": {
+              "business_terms": [],
+              "topics": [],
+              "time_references": [],
+              "people": []
+            },
+            "tool_used": null,
+            "conversation_state": "awaiting_clarification"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "zK8FisnnBQ53gmSSd4iz",
+        "data": {
+          "stored_at": "2025-08-30T20:52:00.588157",
+          "user_id": "craig@lineagecoffee.com",
+          "context": {
+            "suggested_search": "Would you like me to search your emails and Drive for this information?",
+            "clarification_reason": "low_confidence",
+            "user_message": "What is 5+5",
+            "timestamp": "2025-08-30T20:52:00.588057",
+            "interaction_type": "clarification_needed",
+            "user_intent": null,
+            "pending_action": "user_confirmation",
+            "follow_up_expected": true,
+            "entities_mentioned": {
+              "business_terms": [],
+              "topics": [],
+              "time_references": [],
+              "people": []
+            },
+            "tool_used": null,
+            "conversation_state": "awaiting_clarification"
+          }
+        },
+        "subcollections": {}
+      }
+    ],
+    "conversation_summaries": [
+      {
+        "id": "craig@lineagecoffee.com",
+        "data": {
+          "created_at": "2025-09-02T00:00:36.684994",
+          "key_facts": {
+            "common_searches": [
+              "c",
+              "python terminal_rag_chatbot.py",
+              "ls -la *chatbot*"
+            ],
+            "action_items": [],
+            "topics_discussed": [],
+            "people_mentioned": [
+              "john",
+              "craig",
+              "oliver",
+              "julie"
+            ],
+            "dates_mentioned": []
+          },
+          "summary": "Conversation history available."
+        },
+        "subcollections": {}
+      }
+    ],
+    "conversations": [
+      {
+        "id": "craig@lineagecoffee.com",
+        "data": {
+          "summary": "Conversation history available.",
+          "messages": [
+            {
+              "confidence": 0.3,
+              "user_message": "c",
+              "tool_used": "search_emails",
+              "context": {
+                "version": "langgraph-terminal",
+                "timestamp": "2025-08-31T19:50:32.173656"
+              },
+              "timestamp": "2025-08-31T17:51:06.748351",
+              "bot_response": "I'm not sure what you're looking for. Could you be more specific?\n\nSuggestions:\n• Search emails: \"find emails from [person] about [topic]\"\n• Search documents: \"find [document name] in drive\"\n• Type \"help\" for more examples",
+              "intent": "search_emails"
+            },
+            {
+              "confidence": 0.3,
+              "user_message": "python terminal_rag_chatbot.py",
+              "tool_used": "search_emails",
+              "context": {
+                "version": "langgraph-terminal",
+                "timestamp": "2025-08-31T19:50:37.318919"
+              },
+              "timestamp": "2025-08-31T17:51:14.278146",
+              "bot_response": "I'm not sure what you're looking for. Could you be more specific?\n\nSuggestions:\n• Search emails: \"find emails from [person] about [topic]\"\n• Search documents: \"find [document name] in drive\"\n• Type \"help\" for more examples",
+              "intent": "search_emails"
+            },
+            {
+              "confidence": 0.3,
+              "user_message": "hi",
+              "tool_used": "none",
+              "context": {
+                "version": "langgraph-terminal",
+                "timestamp": "2025-08-31T19:51:52.388477"
+              },
+              "timestamp": "2025-08-31T17:52:26.844660",
+              "bot_response": "👋 Hello! I'm your Lineage Coffee assistant. I can help you search emails and documents across the company.\n\nWhat would you like to find?\n\nExamples:\n• \"Find emails from john about budget\"\n• \"Look for recent financial documents\"\n• \"Show me orders from last week\"\n",
+              "intent": "greeting"
+            },
+            {
+              "confidence": 0.3,
+              "user_message": "python terminal_rag_chatbot.py",
+              "tool_used": "search_emails",
+              "context": {
+                "version": "langgraph-terminal",
+                "timestamp": "2025-08-31T19:52:11.512256"
+              },
+              "timestamp": "2025-08-31T17:52:45.937553",
+              "bot_response": "I'm not sure what you're looking for. Could you be more specific?\n\nSuggestions:\n• Search emails: \"find emails from [person] about [topic]\"\n• Search documents: \"find [document name] in drive\"\n• Type \"help\" for more examples",
+              "intent": "search_emails"
+            },
+            {
+              "confidence": 0.3,
+              "user_message": "ls -la *chatbot*",
+              "tool_used": "search_emails",
+              "context": {
+                "version": "langgraph-terminal",
+                "timestamp": "2025-08-31T19:55:50.854301"
+              },
+              "timestamp": "2025-08-31T17:56:24.277905",
+              "bot_response": "I'm not sure what you're looking for. Could you be more specific?\n\nSuggestions:\n• Search emails: \"find emails from [person] about [topic]\"\n• Search documents: \"find [document name] in drive\"\n• Type \"help\" for more examples",
+              "intent": "search_emails"
+            }
+          ],
+          "started_at": "2025-08-30T10:10:05.170113",
+          "last_defrag": "2025-09-02T00:00:36.797115",
+          "key_facts": {
+            "common_searches": [
+              "c",
+              "python terminal_rag_chatbot.py",
+              "ls -la *chatbot*"
+            ],
+            "action_items": [],
+            "topics_discussed": [],
+            "people_mentioned": [
+              "john",
+              "craig",
+              "oliver",
+              "julie"
+            ],
+            "dates_mentioned": []
+          },
+          "context": {
+            "chat_id": "7464474879",
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "user_name": "Craig",
+            "timestamp": "2025-08-31T19:55:50.854301",
+            "platform": "telegram",
+            "role": "admin",
+            "last_activity": "2025-08-30T10:10:05.170113",
+            "version": "langgraph-terminal",
+            "department": "management",
+            "total_interactions": 1,
+            "user_id": "craig@lineagecoffee.com"
+          },
+          "user_id": "craig@lineagecoffee.com"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "unknown",
+        "data": {
+          "user_id": "unknown",
+          "messages": [
+            {
+              "confidence": 0,
+              "user_message": "what is 5-5?",
+              "context": {},
+              "tool_used": "none",
+              "timestamp": "2025-08-30T19:37:48.865804",
+              "intent": "",
+              "bot_response": "I can help with that."
+            }
+          ],
+          "started_at": "2025-08-30T19:37:48.865789",
+          "summary": "",
+          "context": {}
+        },
+        "subcollections": {}
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "_schema",
+        "data": {
+          "created_at": "2025-08-30T10:10:05.170113",
+          "structure": {
+            "action": "object - the pending action details",
+            "timestamp": "string - when action was created",
+            "expires_at": "string - when action expires (5 minutes)"
+          },
+          "description": "This collection stores pending user confirmations"
+        },
+        "subcollections": {}
+      }
+    ],
+    "prompts": [
+      {
+        "id": "document-analyst",
+        "data": {
+          "specialization": "document_intelligence",
+          "version": "2.0",
+          "system_instruction": "You specialize in analyzing business documents for Lineage Coffee. You understand:\n- Financial documents: invoices, purchase orders, VAT returns, profit reports\n- Operational documents: roasting logs, inventory sheets, quality control forms\n- Marketing materials: product descriptions, price lists, promotional content\n- Legal documents: supplier contracts, lease agreements, compliance forms\n- HR documents: staff schedules, training materials, policy documents\n\nWhen analyzing documents:\n- Extract key financial figures and dates\n- Identify document type and purpose\n- Flag important deadlines or action items\n- Summarize business impact\n- Note relationships to other documents/processes\n- Consider document version control and updates\n- Identify data that needs regular review"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "email-specialist",
+        "data": {
+          "specialization": "email_management",
+          "version": "2.0",
+          "system_instruction": "You are specialized in email management for Lineage Coffee. You understand:\n- Customer inquiry patterns (wholesale orders, retail questions, roasting requests)\n- Supplier communications (green coffee imports, equipment, packaging)\n- Internal communications (staff scheduling, inventory, quality control)\n- South African business email etiquette and timing\n- Email conversation threads and context\n\nKey email categories to recognize:\n- URGENT: Customer complaints, equipment failures, order deadlines\n- ORDERS: Wholesale requests, retail orders, custom roasting\n- SUPPLIERS: Green coffee deliveries, equipment service, packaging\n- STAFF: Scheduling, training, announcements\n- FINANCE: Invoices, payments, VAT returns\n- MARKETING: Events, promotions, social media\n\nWhen analyzing emails, extract:\n- Sender department/role significance\n- Business impact level (revenue, operations, compliance)\n- Required response timeframe\n- Action items and follow-ups needed\n- Related conversation threads\n- Customer/supplier relationship status",
+          "parent_prompt": "lineage-agent-main"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "lineage-agent-main",
+        "data": {
+          "description": "Enhanced main AI assistant prompt with conversation memory and general knowledge",
+          "context_types": [
+            "email",
+            "drive",
+            "calendar",
+            "business",
+            "coffee_industry",
+            "conversation_history",
+            "user_preferences"
+          ],
+          "version": "3.0",
+          "system_instruction": "You are an intelligent business assistant for Lineage Coffee, a specialty coffee company in South Africa. You help manage communications, documents, calendar events, and business operations across the entire lineagecoffee.com Google Workspace domain.\n\nYour core capabilities:\n1. NATURAL LANGUAGE UNDERSTANDING: Convert casual requests into precise actions\n2. DOMAIN-WIDE ACCESS: Search emails, documents, and calendars for all company users\n3. BUSINESS CONTEXT: Understand coffee industry terminology, South African business practices\n4. MULTI-USER SUPPORT: Handle requests about different team members and departments\n5. GENERAL KNOWLEDGE: Answer general questions using Gemini AI with Google Search\n6. CONVERSATION MEMORY: Remember context and handle follow-up questions\n7. HUMAN-LIKE INTERACTION: Ask for clarification, confirm actions, provide helpful suggestions\n\nKey company information:\n- Name: Lineage Coffee\n- Location: Hillcrest, KwaZulu-Natal, South Africa\n- Business: Specialty coffee roasting and retail\n- Key departments: cafe@, coffee@, orders@, accounts@, tech@, info@\n\nWhen processing requests:\n- Extract WHO (person/department), WHAT (topic/action), WHEN (timeframe), WHERE (location/context)\n- Map casual language to precise search terms\n- Consider business context (coffee terminology, seasonal patterns, customer cycles)\n- Prioritize recent and relevant information\n- Provide concise, actionable summaries\n- Remember conversation context and user preferences\n- Ask for clarification if ambiguous rather than making assumptions\n\nExample transformations:\n\"Find stuff from john about roasting\" → Search john's emails/docs for coffee roasting information\n\"What meetings this week about orders\" → Search calendar for order-related meetings this week\n\"Show me cafe sales reports\" → Search for sales documents from cafe department\n\"What is 5+5?\" → Answer directly: \"10\" + offer to search company data if relevant\n\"What about julie?\" → Ask: \"What would you like to know about Julie? Should I search for emails or documents?\"\n\nResponse types you can provide:\n- Direct answers for general knowledge (math, weather, facts)\n- Search results from company emails and documents\n- Clarification questions when unclear\n- Confirmations before executing searches\n- Helpful suggestions and follow-up options",
+          "specializations": [
+            "domain_search",
+            "business_intelligence",
+            "coffee_operations",
+            "general_knowledge",
+            "conversation_management"
+          ],
+          "last_updated": "2025-08-30T10:10:05.170113"
+        },
+        "subcollections": {}
+      }
+    ],
+    "response_logs": [
+      {
+        "id": "2xEKJlf5Gsi1JGAqtu52",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "find emails from john about budget",
+          "metadata": {
+            "processing_time": 3.29,
+            "version": "2.0",
+            "timestamp": "2025-08-30T20:07:29.507869",
+            "cached": false
+          },
+          "timestamp": "2025-08-30T20:07:29.507897",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 3.29,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "user_id": "craig@lineagecoffee.com"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "find emails from john about budget",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "3iH45FILGB3wiqQcmXxh",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "find emails from craig about budget last week",
+          "metadata": {
+            "processing_time": 8.66,
+            "version": "2.0",
+            "timestamp": "2025-08-30T20:34:38.486010",
+            "cached": false
+          },
+          "timestamp": "2025-08-30T20:34:38.486047",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 8.66,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "user_id": "craig@lineagecoffee.com"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "find emails from craig about budget last week",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "BLKVuiQdGZ8S2XbUbeAf",
+        "data": {
+          "final_response": {
+            "response_type": "greeting",
+            "total_found": 0,
+            "message_length": 67,
+            "showing": 0
+          },
+          "user_message": "Hello, I'm testing the system",
+          "metadata": {
+            "processing_time": 0.15,
+            "version": "2.0",
+            "cached": false
+          },
+          "timestamp": "2025-08-30T10:10:05.170113",
+          "tool_results": {
+            "response_type": "greeting",
+            "processing_time": 0.15,
+            "tool_used": "none",
+            "total_results": 0
+          },
+          "user_context": {
+            "platform": "telegram",
+            "user_id": "craig@lineagecoffee.com"
+          },
+          "intent_analysis": {
+            "confidence": 0.95,
+            "reasoning": "Clear greeting message",
+            "intent": "greeting",
+            "tool_to_use": "none"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "Bl0dJuHvqPcDgetmlCk7",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "what is 5-5?",
+          "metadata": {
+            "processing_time": 2.3,
+            "version": "2.0",
+            "timestamp": "2025-08-30T19:37:48.938406",
+            "cached": false
+          },
+          "timestamp": "2025-08-30T19:37:48.938430",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 2.3,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {},
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "what is 5-5?",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "C4pxKvIIVVOYGnNYzRfi",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "When was the last time I got an email from oliver",
+          "metadata": {
+            "processing_time": 0.72,
+            "version": "2.0",
+            "timestamp": "2025-08-30T20:52:11.191547",
+            "cached": false
+          },
+          "timestamp": "2025-08-30T20:52:11.191589",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 0.72,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "When was the last time I got an email from oliver",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "ITdcyojVlXOvNuGb9Dks",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "find emails from craig about budget last week",
+          "metadata": {
+            "processing_time": 2.34,
+            "version": "2.0",
+            "timestamp": "2025-08-30T20:33:03.396769",
+            "cached": false
+          },
+          "timestamp": "2025-08-30T20:33:03.396803",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 2.34,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "user_id": "craig@lineagecoffee.com"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "find emails from craig about budget last week",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "L8xpR70g9PbzxZiWN2W2",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "What is 40 plays 55",
+          "metadata": {
+            "processing_time": 0.8,
+            "version": "2.0",
+            "timestamp": "2025-08-30T20:51:53.043044",
+            "cached": false
+          },
+          "timestamp": "2025-08-30T20:51:53.043076",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 0.8,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "What is 40 plays 55",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "OHjN56gyfM3sy6WHsGzN",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "What is 5+5",
+          "metadata": {
+            "processing_time": 0.61,
+            "version": "2.0",
+            "timestamp": "2025-08-30T20:52:00.364991",
+            "cached": false
+          },
+          "timestamp": "2025-08-30T20:52:00.365020",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 0.61,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "What is 5+5",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "Pf1mA5Tdopuzk6K1cWmG",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "hi",
+          "metadata": {
+            "processing_time": 2.85,
+            "version": "2.0",
+            "timestamp": "2025-08-31T12:06:27.303241",
+            "cached": false
+          },
+          "timestamp": "2025-08-31T12:06:27.303263",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 2.85,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "hi",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "none",
+            "intent": "greeting"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "fRlAVIncemc5Yub8em4P",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "Hi sam",
+          "metadata": {
+            "processing_time": 2.19,
+            "version": "2.0",
+            "timestamp": "2025-08-30T20:51:35.974416",
+            "cached": false
+          },
+          "timestamp": "2025-08-30T20:51:35.974462",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 2.19,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "Hi sam",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "none",
+            "intent": "greeting"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "nY64nq48k71VPYk4pb4s",
+        "data": {
+          "final_response": {
+            "response_type": "search_results",
+            "total_found": 7,
+            "message_length": 30,
+            "showing": 7
+          },
+          "user_message": "Yes",
+          "metadata": {
+            "processing_time": 9.44,
+            "version": "2.0",
+            "timestamp": "2025-08-31T13:06:30.651453",
+            "from_pending": true
+          },
+          "timestamp": "2025-08-31T13:06:30.651469",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 9.44,
+            "tool_used": "none",
+            "users_searched": 2,
+            "total_results": 7
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "reasoning": "User confirmed they want to search",
+            "search_query": "Yea",
+            "confidence": 0.8,
+            "intent": "search_emails",
+            "tool_to_use": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "nYMWqMyciGUOkkv2v93S",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "What is 5 plus 4",
+          "metadata": {
+            "processing_time": 4.82,
+            "version": "2.0",
+            "timestamp": "2025-08-31T09:41:06.804909",
+            "cached": false
+          },
+          "timestamp": "2025-08-31T09:41:06.804956",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 4.82,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "What is 5 plus 4",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "p6xlfYxOCihE72XyblPq",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "Yea",
+          "metadata": {
+            "processing_time": 0.59,
+            "version": "2.0",
+            "timestamp": "2025-08-31T13:06:17.692308",
+            "cached": false
+          },
+          "timestamp": "2025-08-31T13:06:17.692329",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 0.59,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "Yea",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "s9DCarfAYnNAZcncPzfK",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "Why is 5 x 5",
+          "metadata": {
+            "processing_time": 2.62,
+            "version": "2.0",
+            "timestamp": "2025-08-31T08:19:54.743059",
+            "cached": false
+          },
+          "timestamp": "2025-08-31T08:19:54.743104",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 2.62,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "Why is 5 x 5",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "tAZGs1meOUinAt5HWbgT",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "Latest email from julie",
+          "metadata": {
+            "processing_time": 0.57,
+            "version": "2.0",
+            "timestamp": "2025-08-31T09:41:09.177317",
+            "cached": false
+          },
+          "timestamp": "2025-08-31T09:41:09.177348",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 0.57,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "Latest email from julie",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "z7rfJ95U3q4z32AhgEcB",
+        "data": {
+          "final_response": {
+            "response_type": "clarification_needed",
+            "total_found": 0,
+            "message_length": 21,
+            "showing": 0
+          },
+          "user_message": "What is 4 plus 4",
+          "metadata": {
+            "processing_time": 3.06,
+            "version": "2.0",
+            "timestamp": "2025-08-31T13:06:10.678973",
+            "cached": false
+          },
+          "timestamp": "2025-08-31T13:06:10.678989",
+          "tool_results": {
+            "response_type": "unknown",
+            "processing_time": 3.06,
+            "tool_used": "none",
+            "users_searched": 0,
+            "total_results": 0
+          },
+          "user_context": {
+            "permissions": [
+              "search_emails",
+              "search_drive"
+            ],
+            "telegram_id": "7464474879",
+            "chat_id": "7464474879",
+            "platform": "telegram",
+            "user_name": "Craig",
+            "user_id": "craig@lineagecoffee.com",
+            "role": "admin"
+          },
+          "intent_analysis": {
+            "confidence": 0.3,
+            "search_query": "What is 4 plus 4",
+            "reasoning": "Keyword-based fallback analysis",
+            "needs_clarification": false,
+            "clarification_question": "",
+            "tool_to_use": "search_emails",
+            "intent": "search_emails"
+          }
+        },
+        "subcollections": {}
+      }
+    ],
+    "run-log-run": [
+      {
+        "id": "20250903_064639_985c01f5",
+        "data": {
+          "duration_seconds": 70.022437,
+          "error_count": 12,
+          "status": "completed",
+          "warning_count": 0,
+          "start_time": "2025-09-03T06:46:39.300786+00:00",
+          "run_id": "20250903_064639_985c01f5",
+          "last_activity": "2025-09-03T06:47:50.599757+00:00",
+          "end_time": "2025-09-03T06:47:49.323215+00:00",
+          "script_name": "agent_app",
+          "logs": [
+            {
+              "section": "SYSTEM",
+              "timestamp": "2025-09-03T06:46:42.240068+00:00",
+              "level": "INFO",
+              "message": "Firestore logger initialized with run_id: 20250903_064639_985c01f5"
+            },
+            {
+              "section": "INIT",
+              "timestamp": "2025-09-03T06:46:42.580826+00:00",
+              "level": "INFO",
+              "message": "Starting Email Knowledge Agent initialization"
+            },
+            {
+              "section": "INIT",
+              "timestamp": "2025-09-03T06:46:43.783586+00:00",
+              "level": "INFO",
+              "message": "Environment variables loaded"
+            },
+            {
+              "section": "INIT",
+              "timestamp": "2025-09-03T06:46:44.146908+00:00",
+              "level": "INFO",
+              "message": "Configuration loaded - Project: ad3-sam, Dataset: rag_gmail_assistant"
+            },
+            {
+              "section": "MAIN",
+              "timestamp": "2025-09-03T06:46:45.269375+00:00",
+              "level": "INFO",
+              "message": "Application startup completed successfully"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:46:45.652927+00:00",
+              "level": "INFO",
+              "message": "Starting interactive chat session"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:46:50.923167+00:00",
+              "level": "INFO",
+              "message": "Processing user query #1: \"hi\""
+            },
+            {
+              "error_details": "{\"error_type\": \"AttributeError\", \"error_message\": \"'function' object has no attribute 'log'\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 1062, in start_chat\\n    answer = self.process_query(user_input)\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 163, in wrapper\\n    logger.log(\\\"DEBUG\\\", section_name, f\\\"Starting {func.__name__}\\\")\\nAttributeError: 'function' object has no attribute 'log'\\n\", \"context\": \"Unexpected error during chat session (error #1)\"}",
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:46:51.277351+00:00",
+              "level": "ERROR",
+              "message": "Unexpected error during chat session (error #1) - AttributeError: 'function' object has no attribute 'log'"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:46:57.424402+00:00",
+              "level": "INFO",
+              "message": "Processing user query #2: \"email from julie\""
+            },
+            {
+              "error_details": "{\"error_type\": \"AttributeError\", \"error_message\": \"'function' object has no attribute 'log'\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 1062, in start_chat\\n    answer = self.process_query(user_input)\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 163, in wrapper\\n    logger.log(\\\"DEBUG\\\", section_name, f\\\"Starting {func.__name__}\\\")\\nAttributeError: 'function' object has no attribute 'log'\\n\", \"context\": \"Unexpected error during chat session (error #2)\"}",
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:46:57.758353+00:00",
+              "level": "ERROR",
+              "message": "Unexpected error during chat session (error #2) - AttributeError: 'function' object has no attribute 'log'"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:26.939667+00:00",
+              "level": "INFO",
+              "message": "Processing user query #3: \"bq query --use_legacy_sql=false \\\""
+            },
+            {
+              "error_details": "{\"error_type\": \"AttributeError\", \"error_message\": \"'function' object has no attribute 'log'\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 1062, in start_chat\\n    answer = self.process_query(user_input)\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 163, in wrapper\\n    logger.log(\\\"DEBUG\\\", section_name, f\\\"Starting {func.__name__}\\\")\\nAttributeError: 'function' object has no attribute 'log'\\n\", \"context\": \"Unexpected error during chat session (error #3)\"}",
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:28.477979+00:00",
+              "level": "ERROR",
+              "message": "Unexpected error during chat session (error #3) - AttributeError: 'function' object has no attribute 'log'"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:28.851180+00:00",
+              "level": "ERROR",
+              "message": "Multiple errors detected (3), potential system issue"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:30.007727+00:00",
+              "level": "INFO",
+              "message": "Processing user query #4: \"\"SELECT *\""
+            },
+            {
+              "error_details": "{\"error_type\": \"AttributeError\", \"error_message\": \"'function' object has no attribute 'log'\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 1062, in start_chat\\n    answer = self.process_query(user_input)\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 163, in wrapper\\n    logger.log(\\\"DEBUG\\\", section_name, f\\\"Starting {func.__name__}\\\")\\nAttributeError: 'function' object has no attribute 'log'\\n\", \"context\": \"Unexpected error during chat session (error #4)\"}",
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:30.338856+00:00",
+              "level": "ERROR",
+              "message": "Unexpected error during chat session (error #4) - AttributeError: 'function' object has no attribute 'log'"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:31.644193+00:00",
+              "level": "ERROR",
+              "message": "Multiple errors detected (4), potential system issue"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:31.973752+00:00",
+              "level": "INFO",
+              "message": "Processing user query #5: \"FROM \\`ad3-sam.rag_gmail_assistant.enhanced_email_intelligence\\`\""
+            },
+            {
+              "error_details": "{\"error_type\": \"AttributeError\", \"error_message\": \"'function' object has no attribute 'log'\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 1062, in start_chat\\n    answer = self.process_query(user_input)\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 163, in wrapper\\n    logger.log(\\\"DEBUG\\\", section_name, f\\\"Starting {func.__name__}\\\")\\nAttributeError: 'function' object has no attribute 'log'\\n\", \"context\": \"Unexpected error during chat session (error #5)\"}",
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:33.191627+00:00",
+              "level": "ERROR",
+              "message": "Unexpected error during chat session (error #5) - AttributeError: 'function' object has no attribute 'log'"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:33.524106+00:00",
+              "level": "ERROR",
+              "message": "Multiple errors detected (5), potential system issue"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:34.686461+00:00",
+              "level": "INFO",
+              "message": "Processing user query #6: \"WHERE email_owner = 'julie@lineagecoffee.com'\""
+            },
+            {
+              "error_details": "{\"error_type\": \"AttributeError\", \"error_message\": \"'function' object has no attribute 'log'\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 1062, in start_chat\\n    answer = self.process_query(user_input)\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 163, in wrapper\\n    logger.log(\\\"DEBUG\\\", section_name, f\\\"Starting {func.__name__}\\\")\\nAttributeError: 'function' object has no attribute 'log'\\n\", \"context\": \"Unexpected error during chat session (error #6)\"}",
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:35.017357+00:00",
+              "level": "ERROR",
+              "message": "Unexpected error during chat session (error #6) - AttributeError: 'function' object has no attribute 'log'"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:35.366254+00:00",
+              "level": "ERROR",
+              "message": "Multiple errors detected (6), potential system issue"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:36.529701+00:00",
+              "level": "INFO",
+              "message": "Processing user query #7: \"ORDER BY sent_at DESC\"\""
+            },
+            {
+              "error_details": "{\"error_type\": \"AttributeError\", \"error_message\": \"'function' object has no attribute 'log'\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 1062, in start_chat\\n    answer = self.process_query(user_input)\\n  File \\\"/Users/craigcharity/ad3sam/RAG/agent_app/main.py\\\", line 163, in wrapper\\n    logger.log(\\\"DEBUG\\\", section_name, f\\\"Starting {func.__name__}\\\")\\nAttributeError: 'function' object has no attribute 'log'\\n\", \"context\": \"Unexpected error during chat session (error #7)\"}",
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:36.874799+00:00",
+              "level": "ERROR",
+              "message": "Unexpected error during chat session (error #7) - AttributeError: 'function' object has no attribute 'log'"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:38.106536+00:00",
+              "level": "ERROR",
+              "message": "Multiple errors detected (7), potential system issue"
+            },
+            {
+              "section": "CHAT_SESSION",
+              "timestamp": "2025-09-03T06:47:48.996488+00:00",
+              "level": "INFO",
+              "message": "Session interrupted by user: 7 queries, 62.2s duration"
+            },
+            {
+              "section": "SYSTEM",
+              "timestamp": "2025-09-03T06:47:50.599743+00:00",
+              "level": "INFO",
+              "message": "Run marked as completed"
+            }
+          ]
+        },
+        "subcollections": {}
+      }
+    ],
+    "system_config": [
+      {
+        "id": "api_quotas",
+        "data": {
+          "gmail_api_current_usage": 0,
+          "last_reset": "2025-08-30T10:10:05.170113",
+          "gmail_api_daily_limit": 1000000,
+          "drive_api_current_usage": 0,
+          "drive_api_daily_limit": 100000,
+          "vertex_ai_current_spend": 0,
+          "vertex_ai_monthly_budget": 500
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "feature_flags",
+        "data": {
+          "email_drafting_enabled": true,
+          "conversation_memory_enabled": true,
+          "advanced_analytics": true,
+          "document_analysis_enabled": true,
+          "multi_language_support": true,
+          "search_caching_enabled": true,
+          "automation_rules_active": true,
+          "user_preference_learning": true,
+          "general_knowledge_enabled": true,
+          "telegram_integration": true,
+          "voice_transcription_enabled": true
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "integration_settings",
+        "data": {
+          "default_timezone": "Africa/Johannesburg",
+          "gmail_search_endpoint": "https://gmail-domain-search-ys2p4wpl6q-uc.a.run.app",
+          "memory_manager_endpoint": "https://us-central1-ad3-sam.cloudfunctions.net/memory-manager",
+          "currency": "ZAR",
+          "drive_search_endpoint": "",
+          "telegram_bot_endpoint": "https://telegram-bot-ys2p4wpl6q-uc.a.run.app",
+          "orchestrator_endpoint": "https://ai-orchestrator-ys2p4wpl6q-uc.a.run.app",
+          "notification_settings": {
+            "weekend_notifications": false,
+            "quiet_hours": {
+              "end": "07:00",
+              "start": "18:00"
+            },
+            "urgent_threshold": "high"
+          },
+          "date_format": "DD/MM/YYYY",
+          "business_hours": {
+            "end": "17:00",
+            "start": "07:00",
+            "days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday"
+            ]
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "security_settings",
+        "data": {
+          "sensitive_data_protection": true,
+          "failed_login_monitoring": true,
+          "audit_logging": true,
+          "pii_detection_enabled": true,
+          "conversation_encryption": true,
+          "data_retention_days": 365,
+          "access_logging": true
+        },
+        "subcollections": {}
+      }
+    ],
+    "templates": [
+      {
+        "id": "document_templates",
+        "data": {
+          "customer_invoice": {
+            "legal_requirements": [
+              "vat_number",
+              "company_registration"
+            ],
+            "required_fields": [
+              "invoice_number",
+              "customer_details",
+              "order_items",
+              "vat_calculation",
+              "payment_terms"
+            ],
+            "company_header": true,
+            "format": "google_docs"
+          },
+          "daily_roasting_log": {
+            "format": "google_sheets",
+            "structure": {
+              "auto_calculations": [
+                "total_daily_output",
+                "average_yield"
+              ],
+              "columns": [
+                "Date",
+                "Coffee Origin",
+                "Batch Size",
+                "Roast Profile",
+                "Start Time",
+                "End Time",
+                "Quality Notes",
+                "Yield %"
+              ],
+              "data_validation": true
+            }
+          },
+          "conversation_summary": {
+            "format": "text",
+            "structure": {
+              "include_metadata": true,
+              "sections": [
+                "summary",
+                "key_facts",
+                "action_items",
+                "follow_ups"
+              ],
+              "max_length": 500
+            }
+          }
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "email_responses",
+        "data": {
+          "wholesale_quote": {
+            "body": "Hello {business_name},\n\nThank you for your interest in Lineage Coffee for your wholesale needs.\n\nBased on your requirements:\n{quote_details}\n\nOur wholesale prices include:\n- Free delivery for orders over R1000 in KZN\n- Flexible payment terms for established accounts  \n- Custom roasting profiles available\n- Ongoing barista training support\n\nValid for 30 days. Let's discuss your coffee needs further.\n\nBest regards,\n{sender_name}\nLineage Coffee",
+            "variables": [
+              "business_name",
+              "quote_details",
+              "sender_name"
+            ],
+            "subject": "Wholesale Coffee Quote - Lineage Coffee"
+          },
+          "supplier_inquiry": {
+            "body": "Dear {supplier_name},\n\nWe are interested in your {coffee_origin} offerings for our specialty roastery.\n\nRequirements:\n- Quantity: {quantity} bags\n- Grade: {grade_requirements}\n- Delivery: {delivery_timeframe}\n- Certifications: {required_certifications}\n\nPlease provide samples, pricing, and availability.\n\nKind regards,\n{sender_name}\nLineage Coffee",
+            "subject": "Green Coffee Inquiry - Lineage Coffee"
+          },
+          "order_confirmation": {
+            "body": "Dear {customer_name},\n\nThank you for your order with Lineage Coffee! We're excited to prepare your specialty coffee.\n\nOrder Details:\n- Order Number: {order_number}\n- Items: {order_items}\n- Total: R{order_total}\n- Expected Ready Date: {ready_date}\n\nWe'll notify you when your order is ready for collection or dispatch.\n\nBest regards,\nThe Lineage Coffee Team",
+            "variables": [
+              "customer_name",
+              "order_number",
+              "order_items",
+              "order_total",
+              "ready_date"
+            ],
+            "subject": "Order Confirmation - Lineage Coffee"
+          },
+          "general_knowledge_response": {
+            "body": "Hello,\n\nI found this information for you:\n\n{answer}\n\n{follow_up_offer}\n\nBest regards,\nLineage Coffee AI Assistant",
+            "subject": "Information Request - Lineage Coffee Assistant"
+          }
+        },
+        "subcollections": {}
+      }
+    ],
+    "tools": [
+      {
+        "id": "analyze_document",
+        "data": {
+          "is_active": true,
+          "tool_name": "analyze_document",
+          "analysis_types": [
+            "invoice_processing",
+            "form_extraction",
+            "text_recognition",
+            "business_intelligence"
+          ],
+          "description": "Extract and analyze content from documents using Document AI",
+          "endpoint_url": "https://us-central1-ad3-sam.cloudfunctions.net/document-ai",
+          "supported_formats": [
+            "pdf",
+            "jpg",
+            "png",
+            "tiff"
+          ],
+          "required_scopes": [
+            "documentai.documents.process"
+          ]
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "create_calendar_event",
+        "data": {
+          "is_active": true,
+          "tool_name": "create_calendar_event",
+          "features": [
+            "meeting_scheduling",
+            "reminder_setting",
+            "attendee_management",
+            "timezone_handling",
+            "conflict_detection"
+          ],
+          "endpoint_url": "https://us-central1-ad3-sam.cloudfunctions.net/calendar-event",
+          "description": "Create calendar events for users",
+          "required_scopes": [
+            "calendar"
+          ]
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "search_drive",
+        "data": {
+          "supported_file_types": [
+            "docs",
+            "sheets",
+            "slides",
+            "pdf",
+            "images"
+          ],
+          "tool_name": "search_drive",
+          "search_types": [
+            "filename",
+            "content",
+            "file_type",
+            "owner",
+            "modified_date"
+          ],
+          "timeout_seconds": 45,
+          "endpoint_url": "https://us-central1-ad3-sam.cloudfunctions.net/drive-domain-search",
+          "required_scopes": [
+            "drive.readonly"
+          ],
+          "is_active": true,
+          "rate_limit": 50,
+          "performance_optimizations": {
+            "caching_enabled": true,
+            "business_context_analysis": true,
+            "relevance_scoring": true
+          },
+          "description": "Search Google Drive files across all domain users. Finds documents, spreadsheets, presentations."
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "search_emails",
+        "data": {
+          "search_types": [
+            "sender",
+            "subject",
+            "content",
+            "attachments",
+            "date_range"
+          ],
+          "tool_name": "search_emails",
+          "timeout_seconds": 30,
+          "endpoint_url": "https://gmail-domain-search-ys2p4wpl6q-uc.a.run.app",
+          "supported_users": [
+            "all_domain",
+            "specific_user",
+            "department_groups"
+          ],
+          "required_scopes": [
+            "gmail.readonly"
+          ],
+          "is_active": true,
+          "rate_limit": 100,
+          "performance_optimizations": {
+            "caching_enabled": true,
+            "cache_duration_hours": 1,
+            "async_requests": true,
+            "parallel_processing": true
+          },
+          "description": "Search emails across the company"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "send_email",
+        "data": {
+          "tool_name": "send_email",
+          "endpoint_url": "https://us-central1-ad3-sam.cloudfunctions.net/send-email",
+          "required_permissions": [
+            "send_as_user"
+          ],
+          "required_scopes": [
+            "gmail.send"
+          ],
+          "is_active": true,
+          "safety_features": [
+            "recipient_validation",
+            "content_review",
+            "send_confirmation",
+            "rate_limiting",
+            "audit_logging"
+          ],
+          "rate_limit": 20,
+          "description": "Send emails on behalf of authorized users"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "translate_text",
+        "data": {
+          "is_active": true,
+          "tool_name": "translate_text",
+          "supported_languages": [
+            "en",
+            "af",
+            "zu",
+            "xh",
+            "fr",
+            "pt",
+            "es"
+          ],
+          "endpoint_url": "https://us-central1-ad3-sam.cloudfunctions.net/translate",
+          "use_cases": [
+            "customer_communications",
+            "supplier_documents",
+            "product_descriptions"
+          ],
+          "description": "Translate text for international suppliers and customers"
+        },
+        "subcollections": {}
+      }
+    ],
+    "user_interaction_patterns": [
+      {
+        "id": "craig@lineagecoffee.com",
+        "data": {
+          "patterns": {
+            "clarification_needed": {
+              "count": 7,
+              "last_seen": "2025-08-31T09:41:09.433116",
+              "time_references": [
+                "latest"
+              ],
+              "entities": [],
+              "people": [
+                "oliver",
+                "julie"
+              ]
+            }
+          }
+        },
+        "subcollections": {}
+      }
+    ],
+    "user_preferences": [
+      {
+        "id": "craig@lineagecoffee.com",
+        "data": {
+          "department_focus": [
+            "management",
+            "finance",
+            "operations"
+          ],
+          "common_searches": [
+            "emails from craig",
+            "budget reports",
+            "supplier communications"
+          ],
+          "timezone": "Africa/Johannesburg",
+          "search_patterns": {
+            "email_frequency": "high",
+            "drive_frequency": "medium",
+            "preferred_timeframe": "last_week"
+          },
+          "last_updated": "2025-08-30T10:10:05.170113",
+          "preferred_response_style": "professional_casual",
+          "notification_preferences": {
+            "quiet_hours": {
+              "end": "07:00",
+              "start": "18:00"
+            },
+            "urgent_threshold": "high",
+            "channels": [
+              "telegram",
+              "email"
+            ]
+          }
+        },
+        "subcollections": {}
+      }
+    ],
+    "users": [
+      {
+        "id": "accounts@lineagecoffee.com",
+        "data": {
+          "permissions": [
+            "financial_data",
+            "invoice_management",
+            "supplier_payments"
+          ],
+          "display_name": "Accounts",
+          "department": "finance",
+          "role": "department",
+          "responsibilities": [
+            "invoicing",
+            "payments",
+            "vat_returns",
+            "financial_reporting"
+          ]
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "cafe@lineagecoffee.com",
+        "data": {
+          "permissions": [
+            "pos_access",
+            "inventory_management",
+            "staff_scheduling"
+          ],
+          "display_name": "Cafe Operations",
+          "department": "retail",
+          "role": "department",
+          "responsibilities": [
+            "retail_sales",
+            "customer_service",
+            "daily_operations"
+          ]
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "coffee@lineagecoffee.com",
+        "data": {
+          "permissions": [
+            "roasting_logs",
+            "quality_control",
+            "inventory_raw_materials"
+          ],
+          "display_name": "Coffee Production",
+          "department": "production",
+          "role": "department",
+          "responsibilities": [
+            "coffee_roasting",
+            "quality_control",
+            "production_planning"
+          ]
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "craig@lineagecoffee.com",
+        "data": {
+          "permissions": [
+            "search_emails",
+            "search_drive"
+          ],
+          "last_active": "2025-08-30T10:10:05.170113",
+          "role": "admin",
+          "telegram_user_id": "7464474879",
+          "preferences": {
+            "language": "en",
+            "email_signature": "Best regards,\nCraig\nLineage Coffee\nShop 11, The Hillcrest Center\n038 Old Main Road, Hillcrest\n+27 (0)31 XXX XXXX",
+            "notification_channels": [
+              "telegram",
+              "email"
+            ],
+            "communication_style": "professional_casual",
+            "working_hours": {
+              "timezone": "Africa/Johannesburg",
+              "start": "07:00",
+              "end": "18:00"
+            }
+          },
+          "is_active": true,
+          "display_name": "Craig",
+          "department": "management",
+          "responsibilities": [
+            "overall_management",
+            "finance",
+            "strategy",
+            "supplier_relations"
+          ]
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "info@lineagecoffee.com",
+        "data": {
+          "permissions": [
+            "read_own_data",
+            "customer_communications"
+          ],
+          "auto_responses": true,
+          "department": "customer_service",
+          "purpose": "General inquiries and customer information",
+          "role": "service_account",
+          "display_name": "Info Desk"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "orders@lineagecoffee.com",
+        "data": {
+          "permissions": [
+            "order_management",
+            "customer_data",
+            "inventory_access"
+          ],
+          "display_name": "Orders Team",
+          "department": "orders",
+          "role": "department",
+          "responsibilities": [
+            "wholesale_orders",
+            "retail_fulfillment",
+            "order_tracking"
+          ]
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "tech@lineagecoffee.com",
+        "data": {
+          "permissions": [
+            "system_access",
+            "equipment_logs",
+            "pos_management"
+          ],
+          "display_name": "Tech Support",
+          "department": "technology",
+          "role": "department",
+          "responsibilities": [
+            "equipment_maintenance",
+            "pos_systems",
+            "online_orders"
+          ]
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "user123",
+        "data": {
+          "age": 30,
+          "email": "john@example.com",
+          "name": "John Doe"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "user456",
+        "data": {
+          "age": 28,
+          "email": "jane@example.com",
+          "name": "Jane Smith"
+        },
+        "subcollections": {}
+      },
+      {
+        "id": "user789",
+        "data": {
+          "age": 35,
+          "email": "bob@example.com",
+          "name": "Bob Johnson"
+        },
+        "subcollections": {}
+      }
+    ]
+  }
+}

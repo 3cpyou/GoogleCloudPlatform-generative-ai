@@ -1,4 +1,163 @@
-# Generative AI
+# AD3Gem - Conversational Intelligence System
+
+**A complete Retrieval-Augmented Generation (RAG) chatbot built with Gemini AI and Google Cloud Firestore, featuring intelligent email search and conversation memory.**
+
+---
+
+## 🚀 What is AD3Gem?
+
+AD3Gem is a production-ready conversational AI system that connects to your organization's email data and provides intelligent, context-aware responses. Built for the Lineage Coffee business, it demonstrates how to create a comprehensive RAG system using Google Cloud technologies.
+
+### ✨ Key Features
+
+- **📧 Email Intelligence**: Search and analyze business emails with natural language queries
+- **🧠 Conversation Memory**: Maintains context across chat sessions with persistent memory
+- **🗄️ Multi-Database Architecture**: Connects to 4 specialized Firestore databases
+- **🤖 Gemini AI Integration**: Powered by Google's advanced language models
+- **🔍 Flexible Search**: Find emails by sender, content, date, or complex queries
+- **💬 Natural Interaction**: Understands business context and provides helpful responses
+
+## 🏗️ System Architecture
+
+```
+┌─────────────────┬─────────────────┬─────────────────┬─────────────────┐
+│   Main Data     │  Conversations  │     Memory      │     Emails      │
+│ ad3gem-database │ad3gem-conversation│ ad3gem-memory  │  ad3sam-email   │
+├─────────────────┼─────────────────┼─────────────────┼─────────────────┤
+│ • users         │ • chat_history  │ • memory_heads  │ • reports       │
+│ • projects      │ • sessions      │ • claims        │ • sample_emails │
+│ • sample_data   │ • contexts      │ • beliefs       │ • top_senders   │
+└─────────────────┴─────────────────┴─────────────────┴─────────────────┘
+                                    │
+                            ┌───────▼───────┐
+                            │ firestore_client.py │
+                            │ (Database Layer)    │
+                            └───────┬───────┘
+                                    │
+                            ┌───────▼───────┐
+                            │ simple_chatbot.py │
+                            │ (AI Layer)        │
+                            └───────┬───────┘
+                                    │
+                            ┌───────▼───────┐
+                            │ Gemini 1.5 Flash │
+                            │ (Language Model)  │
+                            └─────────────────┘
+```
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.12+ with Conda
+- Google Cloud Project with Vertex AI and Firestore enabled
+- Service Account with appropriate permissions
+
+### Installation
+
+1. **Clone and Setup Environment**
+   ```bash
+   conda create -n ad3gem python=3.12
+   conda activate ad3gem
+   pip install -r requirements.txt
+   ```
+
+2. **Configure Environment Variables**
+   ```bash
+   # Copy and modify the environment setup
+   cp /path/to/environment-setup/templates/ad3gem-env-setup.sh ./
+   source ad3gem-env-setup.sh
+   ```
+
+3. **Initialize Sample Data**
+   ```bash
+   python setup_firestore.py
+   ```
+
+4. **Start the Chatbot**
+   ```bash
+   python simple_chatbot.py
+   ```
+
+## 💬 Usage Examples
+
+```
+You: "when did julie last email?"
+Bot: Found 3 recent emails from julie:
+     📧 Re: Payment now due... (2025-09-04 13:20)
+     📧 Re: Zapper refund request... (2025-09-04 13:19)
+     📧 Re: POP Invoice... (2025-09-04 11:11)
+
+You: "emails from craig@wmcahn.co.za"
+Bot: Found 10 emails from Craig Wishart:
+     📧 Invoice (2025-09-04 13:17)
+     📧 Statement follow-up (2025-09-04 12:45)
+
+You: "show recent emails"
+Bot: Here are the 5 most recent emails:
+     📧 From: Julie Pilbrough...
+```
+
+## 🗂️ Core Components
+
+### `firestore_client.py`
+- **Purpose**: Database abstraction layer
+- **Functions**: Email search, conversation storage, memory management
+- **Databases**: Manages connections to all 4 Firestore databases
+
+### `simple_chatbot.py`
+- **Purpose**: Main chatbot interface with Gemini integration
+- **Features**: Natural language processing, email queries, context awareness
+- **Intelligence**: 95% understanding confidence for complex queries
+
+### `ad3gem-env-setup.sh`
+- **Purpose**: Environment configuration
+- **Variables**: Database names, API keys, service account settings
+
+## 📊 Database Schema
+
+### Email Database (`ad3sam-email`)
+```
+reports/
+├── 20250904_110423/
+│   └── sample_emails/
+│       ├── {doc_id}/
+│       │   ├── from: "Julie Pilbrough <julie@lineagecoffee.com>"
+│       │   ├── to: "recipient@example.com"
+│       │   ├── subject: "Email subject"
+│       │   ├── processed_at: "2025-09-04T13:20:32Z"
+│       │   └── body: "Email content..."
+```
+
+### Memory Database (`ad3gem-memory`)
+```
+memory_heads/
+├── {memory_id}/
+│   ├── facet: "user_preferences"
+│   ├── scope: "email_queries"
+│   ├── claim: "User prefers recent emails first"
+│   ├── confidence: 0.95
+│   └── timestamp: "2025-09-04T13:20:32Z"
+```
+
+## 🔧 Advanced Configuration
+
+### Custom Email Queries
+The system supports complex natural language queries:
+- **Sender-specific**: "emails from julie@lineagecoffee.com"
+- **Content search**: "emails about invoices"
+- **Date ranges**: "emails from last week"
+- **Recipient filtering**: "emails to craig@lineagecoffee.com"
+
+### Memory Management
+AD3Gem learns and remembers:
+- User preferences
+- Common query patterns
+- Business relationships
+- Email context and importance
+
+---
+
+# Original Google Cloud Generative AI Repository
 
 > NOTE: [Gemini 2.0 Flash](https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2) has been released! Here are the latest notebooks and demos using the new model:
 >
