@@ -1,0 +1,13 @@
+# Runtime basics
+flask==2.3.3
+
+# Google Cloud libs
+google-cloud-firestore==2.16.0
+google-cloud-aiplatform>=1.111.0,<2.0.0
+
+# LangChain "0.3 line" – keep these in sync
+langchain>=0.3.0,<0.4.0
+langchain-core>=0.3.0,<0.4.0
+langchain-text-splitters>=0.3.0,<0.4.0
+langchain-google-vertexai>=2.0.20,<3.0.0
+langchain-google-firestore==0.5.0

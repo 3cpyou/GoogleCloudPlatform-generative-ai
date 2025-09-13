@@ -66,6 +66,7 @@ langchain-community
 langchain-core
 langchain-google-alloydb-pg
 langchain-google-vertexai
+langchain-google-firestore
 langchain-text-splitters
 langserve
 librosa
