@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Find the most recent thread that has attachments.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE hasAttachments = true ORDER BY sentAt DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-01T12:00:00Z"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE hasAttachments = true ORDER BY sentAt DESC LIMIT 1;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('hasAttachments', '==', True).order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).stream()\nfor doc in docs:\n    print(doc.id, doc.to_dict())",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-01T12:00:00Z"
+  }
+}

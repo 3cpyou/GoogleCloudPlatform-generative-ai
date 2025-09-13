@@ -1,0 +1,3 @@
+#!/bin/bash
+# Auto-activate conda environment for ad3gem project
+conda activate ad3gem

@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Find messages where accounts@vervewater.co.za asked for payment, sorted by newest.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM `email_search_index` WHERE fromEmail = 'accounts@vervewater.co.za' AND bodySearchable LIKE '%payment%' ORDER BY sentAt DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-01T00:00:00Z"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM `email_search_index` WHERE fromEmail = 'accounts@vervewater.co.za' AND bodySearchable LIKE '%payment%' ORDER BY sentAt DESC LIMIT 1;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('fromEmail', '==', 'accounts@vervewater.co.za').where('bodySearchable', 'array_contains', 'payment').order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).get()",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-01T00:00:00Z"
+  }
+}

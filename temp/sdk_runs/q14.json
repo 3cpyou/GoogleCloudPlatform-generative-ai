@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "List all emails in the last month where adrian@rancilio.co.za sent an attachment.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE fromEmail = 'adrian@rancilio.co.za' AND hasAttachments = true AND sentAt >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 MONTH) ORDER BY sentAt DESC;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-08T12:00:00Z"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE fromEmail = 'adrian@rancilio.co.za' AND hasAttachments = true AND sentAt >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 MONTH) ORDER BY sentAt DESC;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('fromEmail', '==', 'adrian@rancilio.co.za').where('hasAttachments', '==', True).where('sentAt', '>=', firestore.firestore.Timestamp.now() - timedelta(days=30)).order_by('sentAt', direction=firestore.Query.DESCENDING).stream()",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-08T12:00:00Z"
+  }
+}

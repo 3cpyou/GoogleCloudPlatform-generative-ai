@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Who did we email most recently this week?",
+    "generated_sql": "SELECT toPeople, toEmails, sentAt, snippet, messageId, threadId FROM email_search_index WHERE sentAt >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 7 DAY) ORDER BY sentAt DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-08T12:00:00Z"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT toPeople, toEmails, sentAt, snippet, messageId, threadId FROM email_search_index WHERE sentAt >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 7 DAY) ORDER BY sentAt DESC LIMIT 1;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('sentAt', '>=', firestore.firestore.Timestamp.now() - timedelta(days=7)).order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).stream()\nfor doc in docs:\n    print(doc.to_dict())",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-08T12:00:00Z"
+  }
+}

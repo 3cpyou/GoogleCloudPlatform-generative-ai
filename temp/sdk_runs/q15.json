@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Which supplier domain emailed accounts@lineagecoffee.com the most in the last quarter?",
+    "generated_sql": "SELECT fromEmail, COUNT(*) as email_count FROM email_search_index WHERE 'lineagecoffee.com' IN UNNEST(toEmails) AND sentAt >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 3 MONTH) GROUP BY fromEmail ORDER BY email_count DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-01T00:00:00Z"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT fromEmail, COUNT(*) as email_count FROM email_search_index WHERE 'lineagecoffee.com' IN UNNEST(toEmails) AND sentAt >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 3 MONTH) GROUP BY fromEmail ORDER BY email_count DESC LIMIT 1;",
+    "translated_sdk_code": "from google.cloud import firestore\ndb = firestore.Client()\nquery = db.collection('email_search_index')\nquery = query.where('toEmails', 'array_contains', 'lineagecoffee.com')\nquery = query.where('sentAt', '>=', firestore.firestore.Timestamp.now() - timedelta(days=90))\nquery = query.order_by('sentAt', direction=firestore.Query.DESCENDING)\nquery = query.limit(1)\ndocs = query.stream()",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-01T00:00:00Z"
+  }
+}

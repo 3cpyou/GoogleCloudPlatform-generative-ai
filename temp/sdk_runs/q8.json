@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Show all emails today that mention ‘order’.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE DATE(sentAt) = CURRENT_DATE() AND 'order' IN UNNEST(searchTerms) ORDER BY sentAt DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "placeholder"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE DATE(sentAt) = CURRENT_DATE() AND 'order' IN UNNEST(searchTerms) ORDER BY sentAt DESC LIMIT 1;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('sentAt', '>=', datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)).where('searchTerms', 'array_contains', 'order').order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).stream()\nfor doc in docs:\n    print(doc.id, doc.to_dict())",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "placeholder"
+  }
+}

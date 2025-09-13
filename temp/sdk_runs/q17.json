@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Get the latest email from brendan@lightco.co.za that mentions ‘quote’.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE fromEmail = 'brendan@lightco.co.za' AND 'quote' IN UNNEST(searchTerms) ORDER BY sentAt DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-01T12:00:00Z"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE fromEmail = 'brendan@lightco.co.za' AND 'quote' IN UNNEST(searchTerms) ORDER BY sentAt DESC LIMIT 1;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('fromEmail', '==', 'brendan@lightco.co.za').where('searchTerms', 'array_contains', 'quote').order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).get()",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-01T12:00:00Z"
+  }
+}

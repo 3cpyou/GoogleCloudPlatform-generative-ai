@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Show me the newest email that includes julie@lineagecoffee.com and accounts@toscant.co.za together.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE 'julie' IN UNNEST(toPeople) AND 'accounts@toscant.co.za' IN UNNEST(toEmails) ORDER BY sentAt DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "placeholder"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE 'julie' IN UNNEST(toPeople) AND 'accounts@toscant.co.za' IN UNNEST(toEmails) ORDER BY sentAt DESC LIMIT 1;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('toPeople', 'array_contains', 'julie').where('toEmails', 'array_contains', 'accounts@toscant.co.za').order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).get()",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "placeholder"
+  }
+}

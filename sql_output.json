@@ -1,0 +1,7 @@
+{
+  "natural_language": "summarise the last email from craigcharity@gmail.com",
+  "generated_sql": "SELECT messageId, threadId, fromEmail, fromPerson, subject, sentAt, snippet, bodyPreview FROM `email_search_index` ORDER BY sentAt DESC LIMIT 1;",
+  "double_checked": true,
+  "model_used": "fallback",
+  "timestamp": "2025-09-09T11:15:23.484011+00:00"
+}

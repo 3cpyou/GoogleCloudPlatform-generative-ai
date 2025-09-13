@@ -1,0 +1,82 @@
+[
+    {
+        "index": 1,
+        "text": "Show me the latest email."
+    },
+    {
+        "index": 2,
+        "text": "What is a summary of the last message?"
+    },
+    {
+        "index": 3,
+        "text": "List unread emails from the past month."
+    },
+    {
+        "index": 4,
+        "text": "Find the most recent thread that has attachments."
+    },
+    {
+        "index": 5,
+        "text": "Pull all emails with attachments in the last 30 days."
+    },
+    {
+        "index": 6,
+        "text": "Who did we email most recently this week?"
+    },
+    {
+        "index": 7,
+        "text": "Summarize the last 3 messages on the most recent thread."
+    },
+    {
+        "index": 8,
+        "text": "Show all emails today that mention ‘order’."
+    },
+    {
+        "index": 9,
+        "text": "Get the latest payment-related message."
+    },
+    {
+        "index": 10,
+        "text": "Find the last time we received an email mentioning ‘quote’."
+    },
+    {
+        "index": 11,
+        "text": "Which of our team replied most recently to an external contact?"
+    },
+    {
+        "index": 12,
+        "text": "Pull the most recent email that mentions both ‘order’ and ‘delivery’."
+    },
+    {
+        "index": 13,
+        "text": "Show me threads where the tone sounds urgent."
+    },
+    {
+        "index": 14,
+        "text": "List all emails in the last month that have image attachments."
+    },
+    {
+        "index": 15,
+        "text": "Which sender emailed our accounts team the most in the last quarter?"
+    },
+    {
+        "index": 16,
+        "text": "Find messages that asked for payment, sorted by newest."
+    },
+    {
+        "index": 17,
+        "text": "Get the latest email that mentions ‘quote’."
+    },
+    {
+        "index": 18,
+        "text": "Pull all emails to anyone at Lineage this week."
+    },
+    {
+        "index": 19,
+        "text": "Find emails in the last 24 hours that mention ‘invoice’."
+    },
+    {
+        "index": 20,
+        "text": "Show me the newest email that includes both ‘order’ and ‘invoice’ keywords."
+    }
+]

@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Summarize the last 3 messages on the most recent thread.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE threadId = (SELECT threadId FROM email_search_index ORDER BY sentAt DESC LIMIT 1) ORDER BY sentAt DESC LIMIT 3;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-08T12:00:00Z"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE threadId = (SELECT threadId FROM email_search_index ORDER BY sentAt DESC LIMIT 1) ORDER BY sentAt DESC LIMIT 3;",
+    "translated_sdk_code": "latest_thread = db.collection('email_search_index').order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).get()\nif latest_thread:\n    thread_id = latest_thread[0].get('threadId')\n    messages = db.collection('email_search_index').where('threadId', '==', thread_id).order_by('sentAt', direction=firestore.Query.DESCENDING).limit(3).get()",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-08T12:00:00Z"
+  }
+}

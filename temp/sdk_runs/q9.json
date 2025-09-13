@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Get the latest payment-related message from accounts@toscant.co.za to our accounts team.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM `email_search_index` WHERE fromEmail = 'accounts@toscant.co.za' AND 'accounts' IN UNNEST(toPeople) AND LOWER(subject) LIKE '%payment%' ORDER BY sentAt DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-08T12:00:00Z"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM `email_search_index` WHERE fromEmail = 'accounts@toscant.co.za' AND 'accounts' IN UNNEST(toPeople) AND LOWER(subject) LIKE '%payment%' ORDER BY sentAt DESC LIMIT 1;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('fromEmail', '==', 'accounts@toscant.co.za').where('toPeople', 'array_contains', 'accounts').where('subject', '>=', 'payment').order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).get()",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "2023-10-08T12:00:00Z"
+  }
+}

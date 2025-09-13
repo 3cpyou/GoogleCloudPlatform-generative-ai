@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Pull all emails from brenda@statpackkzn.co.za to anyone at Lineage this week.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE fromEmail = 'brenda@statpackkzn.co.za' AND 'lineagecoffee.com' IN UNNEST(toEmails) AND sentAt >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 7 DAY) ORDER BY sentAt DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "placeholder"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE fromEmail = 'brenda@statpackkzn.co.za' AND 'lineagecoffee.com' IN UNNEST(toEmails) AND sentAt >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 7 DAY) ORDER BY sentAt DESC LIMIT 1;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('fromEmail', '==', 'brenda@statpackkzn.co.za').where('toEmails', 'array_contains', 'office@lineagecoffee.com').where('sentAt', '>=', firestore.firestore.Timestamp.now() - timedelta(days=7)).order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).stream()",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "placeholder"
+  }
+}

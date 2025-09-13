@@ -1,0 +1,17 @@
+{
+  "sql_json": {
+    "natural_language": "Find emails in the last 24 hours where accounts@thegourmetgreek.com appears anywhere on the thread.",
+    "generated_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE TIMESTAMP_DIFF(CURRENT_TIMESTAMP(), sentAt, HOUR) <= 24 AND accounts@thegourmetgreek.com IN UNNEST(allEmails) ORDER BY sentAt DESC LIMIT 1;",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "placeholder"
+  },
+  "sdk_json": {
+    "from_sql": "SELECT messageId, threadId, fromEmail, subject, sentAt, snippet FROM email_search_index WHERE TIMESTAMP_DIFF(CURRENT_TIMESTAMP(), sentAt, HOUR) <= 24 AND accounts@thegourmetgreek.com IN UNNEST(allEmails) ORDER BY sentAt DESC LIMIT 1;",
+    "translated_sdk_code": "docs = db.collection('email_search_index').where('sentAt', '>=', datetime.datetime.now() - datetime.timedelta(hours=24)).where('allEmails', 'array_contains', 'accounts@thegourmetgreek.com').order_by('sentAt', direction=firestore.Query.DESCENDING).limit(1).stream()",
+    "target": "Firestore Python SDK",
+    "double_checked": true,
+    "model_used": "gpt-4o-mini",
+    "timestamp": "placeholder"
+  }
+}

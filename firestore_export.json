@@ -1,0 +1,545 @@
+{
+    "thread_summaries": [
+        {
+            "id": "15824df3b52cdedd",
+            "data": {
+                "messageCount": 1,
+                "subject": "Max on Top",
+                "lastMessage": {
+                    "from": "craig@lineagecoffee.com",
+                    "sentAt": "2024-02-05 08:51:54+00:00",
+                    "preview": "[image: facebook] <https://www.facebook.com/lineagecoffee> \r\n[image: instagram] <https://www.instagram.com/lineage_coffeesa> \r\nCraig Charity\r\n\r\n*Owner*\r\n\r\nLineage Coffee Pty Ltd\r\n   \r\n0310350872 <031+"
+                },
+                "lastActivity": "2024-02-05 08:51:54+00:00",
+                "isInternal": true,
+                "keyTopics": [
+                    "max",
+                    "lineage_coffeesa",
+                    "shop",
+                    "lineage",
+                    "pty",
+                    "craig",
+                    "lineagecoffee",
+                    "craigcharity",
+                    "owner",
+                    "charity"
+                ],
+                "hasAttachments": true,
+                "participants": {
+                    "craig@lineagecoffee.com": {
+                        "name": "Craig Charity",
+                        "email": "craig@lineagecoffee.com",
+                        "isInternal": true
+                    }
+                },
+                "threadId": "15824df3b52cdedd",
+                "startDate": "2024-02-05 08:51:54+00:00",
+                "updatedAt": "2025-09-08 19:45:56.847225+00:00"
+            }
+        },
+        {
+            "id": "15dc0a1db6eaa66f",
+            "data": {
+                "messageCount": 2,
+                "subject": "Xero Support - Import bulk payment sample - CX0005447025",
+                "lastMessage": {
+                    "from": "craig@lineagecoffee.com",
+                    "sentAt": "2023-10-25 03:56:15+00:00",
+                    "preview": "Hi Xero\r\n\r\nThe FNB bank feed does not seem to be working on my Xero account. My\r\naccount email address is craigcharity@gmail.com.\r\n\r\nI have refreshed it and updated login details but nothing has chang"
+                },
+                "lastActivity": "2023-10-25 03:56:15+00:00",
+                "isInternal": false,
+                "participants": {
+                    "support@support.xero.com": {
+                        "name": "Xero Support",
+                        "email": "support@support.xero.com",
+                        "isInternal": false
+                    },
+                    "craig@lineagecoffee.com": {
+                        "name": "Craig Charity",
+                        "email": "craig@lineagecoffee.com",
+                        "isInternal": true
+                    }
+                },
+                "hasAttachments": false,
+                "keyTopics": [
+                    "email",
+                    "payment",
+                    "address",
+                    "account",
+                    "updated",
+                    "bank",
+                    "craig",
+                    "fnb",
+                    "craigcharity",
+                    "gmail"
+                ],
+                "threadId": "15dc0a1db6eaa66f",
+                "startDate": "2023-10-25 03:56:15+00:00",
+                "updatedAt": "2025-09-08 19:47:53.216697+00:00"
+            }
+        },
+        {
+            "id": "15f5c6cbecc0ec2e",
+            "data": {
+                "messageCount": 10,
+                "subject": "PRESSBOARD PRO FORMA",
+                "lastMessage": {
+                    "from": "craig@lineagecoffee.com",
+                    "sentAt": "2024-02-14 11:30:58+00:00",
+                    "preview": "Hi\r\n\r\n\r\n[image: facebook] <https://www.facebook.com/lineagecoffee> \r\n[image: instagram] <https://www.instagram.com/lineage_coffeesa> \r\nCraig Charity\r\n\r\n*Owner*\r\n\r\nLineage Coffee Pty Ltd\r\n   \r\n03103508"
+                },
+                "lastActivity": "2024-02-14 11:30:58+00:00",
+                "isInternal": true,
+                "participants": {
+                    "tanya@natmould.co.za": {
+                        "name": "Tanya",
+                        "email": "tanya@natmould.co.za",
+                        "isInternal": false
+                    },
+                    "craigcharity@lineagecoffee.com": {
+                        "name": "Craig Charity",
+                        "email": "craigcharity@lineagecoffee.com",
+                        "isInternal": true
+                    },
+                    "craig@lineagecoffee.com": {
+                        "name": "Craig Charity",
+                        "email": "craig@lineagecoffee.com",
+                        "isInternal": true
+                    }
+                },
+                "hasAttachments": false,
+                "keyTopics": [
+                    "lineage_coffeesa",
+                    "shop",
+                    "pressboard",
+                    "lineage",
+                    "pty",
+                    "craig",
+                    "lineagecoffee",
+                    "craigcharity",
+                    "owner",
+                    "charity"
+                ],
+                "threadId": "15f5c6cbecc0ec2e",
+                "startDate": "2024-02-14 11:30:58+00:00",
+                "updatedAt": "2025-09-08 19:45:42.848312+00:00"
+            }
+        }
+    ],
+    "people_directory": [
+        {
+            "id": "01000193ac28de4a-37021520-7918-470f-a8b7-e163ca968e5e-000000@amazonses.com",
+            "data": {
+                "firstName": "01000193Ac28De4A-37021520-7918-470F-A8B7-E163Ca968E5E-000000",
+                "displayName": "01000193Ac28De4A-37021520-7918-470F-A8B7-E163Ca968E5E-000000",
+                "searchKey": "01000193ac28de4a-37021520-7918-470f-a8b7-e163ca968e5e-000000",
+                "lastSeen": "2025-09-08 19:39:22.181121+00:00",
+                "isInternal": false,
+                "email": "01000193ac28de4a-37021520-7918-470f-a8b7-e163ca968e5e-000000@amazonses.com",
+                "personId": "01000193ac28de4a-37021520-7918-470f-a8b7-e163ca968e5e-000000@amazonses.com"
+            }
+        },
+        {
+            "id": "01000193b00987ae-e42ec913-5b5c-4866-9fa0-efab7a5f54c4-000000@mail.canva.com",
+            "data": {
+                "firstName": "01000193B00987Ae-E42Ec913-5B5C-4866-9Fa0-Efab7A5F54C4-000000",
+                "displayName": "01000193B00987Ae-E42Ec913-5B5C-4866-9Fa0-Efab7A5F54C4-000000",
+                "searchKey": "01000193b00987ae-e42ec913-5b5c-4866-9fa0-efab7a5f54c4-000000",
+                "lastSeen": "2025-09-08 19:39:21.680504+00:00",
+                "isInternal": false,
+                "email": "01000193b00987ae-e42ec913-5b5c-4866-9fa0-efab7a5f54c4-000000@mail.canva.com",
+                "personId": "01000193b00987ae-e42ec913-5b5c-4866-9fa0-efab7a5f54c4-000000@mail.canva.com"
+            }
+        },
+        {
+            "id": "01000193b692774c-cc75b934-7aea-4dfd-93c0-c95dfc9dc983-000000@amazonses.com",
+            "data": {
+                "firstName": "01000193B692774C-Cc75B934-7Aea-4Dfd-93C0-C95Dfc9Dc983-000000",
+                "displayName": "01000193B692774C-Cc75B934-7Aea-4Dfd-93C0-C95Dfc9Dc983-000000",
+                "searchKey": "01000193b692774c-cc75b934-7aea-4dfd-93c0-c95dfc9dc983-000000",
+                "lastSeen": "2025-09-08 19:39:19.722432+00:00",
+                "isInternal": false,
+                "email": "01000193b692774c-cc75b934-7aea-4dfd-93c0-c95dfc9dc983-000000@amazonses.com",
+                "personId": "01000193b692774c-cc75b934-7aea-4dfd-93c0-c95dfc9dc983-000000@amazonses.com"
+            }
+        }
+    ],
+    "messages_full": [
+        {
+            "id": "18a7374da2f64c3d",
+            "data": {
+                "messageId": "18a7374da2f64c3d",
+                "internalDate": "1694154152000",
+                "historyId": "749177",
+                "labelIds": [
+                    "UNREAD",
+                    "SENT",
+                    "INBOX"
+                ],
+                "snippet": "Order Date: Order from: Email: daniela@kwingin.co.za Cell: Order: 30x Fingerprint Beans 1kg 8X250g Decaf Espresso Ground 1x Cleaning Agent Additional information: Please let me know if any amount will",
+                "attachments": [],
+                "owner": "Mark@lineagecoffee.com",
+                "headers": {
+                    "messageId": "<CAAER+BMJmDwomEryQMmosGwYpWRQavNpOWz7usjZS+-wr1YiGA@mail.gmail.com>",
+                    "date": "2023-09-08T01:22:32-05:00",
+                    "references": [],
+                    "subject": "New order from More at the Gallery",
+                    "inReplyTo": "",
+                    "from": [
+                        {
+                            "email": "coffee@lineagecoffee.com",
+                            "name": ""
+                        }
+                    ],
+                    "bcc": [],
+                    "to": [
+                        {
+                            "email": "coffee@lineagecoffee.com",
+                            "name": ""
+                        }
+                    ],
+                    "cc": []
+                },
+                "createdAt": "2025-09-08 19:40:53.027615+00:00",
+                "labelNames": [
+                    "UNREAD",
+                    "SENT",
+                    "INBOX"
+                ],
+                "bodyHtml": "",
+                "threadId": "18a7374da2f64c3d",
+                "bodyText": "Order Date: \n\nOrder from: \nEmail: daniela@kwingin.co.za\nCell: \n\nOrder: \n30x Fingerprint Beans 1kg\n8X250g Decaf Espresso Ground\n1x Cleaning Agent\n\n\nAdditional information:\nPlease let me know if any amount will be ready sooner. We are all out again. We\ncan collect a emergency supply and follow up with balance of order when ready.\n\nShipping option: Collect\n___ __"
+            }
+        },
+        {
+            "id": "18a73aec13f59d2a",
+            "data": {
+                "messageId": "18a73aec13f59d2a",
+                "internalDate": "1694157939000",
+                "historyId": "8231967",
+                "labelIds": [
+                    "IMPORTANT",
+                    "CATEGORY_PERSONAL",
+                    "INBOX"
+                ],
+                "snippet": "Morning Tegan I hope you are well, Happy Friday, just checking if payment was done please? If so please send POP or advise as to when payment will be made. Thank you, Kind Regards, Emily Lumley From:",
+                "attachments": [
+                    {
+                        "mimeType": "image/jpeg",
+                        "filename": "image001.jpg",
+                        "gmailAttachmentId": "ANGjdJ9Z-z1kpvMHw7kRHSgYWRwkwlZWlpl37iMtfB_oi0SxbZ09ud_0_KxgHvryc6ZtBliiLQhlHWr5g7_8z09_TUBDtDHEDG5I6wMQ3QMyKKW63NjLIYvDRbO1_1Df1Y1UQfSgggDyhd3pUXQn1q3BseE0PrrAWgiP928kqtzc1gT6J3K90xW7YiA4ReLMvK21cZfwDNffb9_PYna_zveASg8VukMvt_dQv3RWeOkTS-JuT9RrERO1TnAJHSXUnJ_AVSogVZLPPXET2t2o6o1OWSZ2zxqTOyjagAFDEA21LJ71CmcMVQ-RGnU9yVqvMjWLOUw3xEogepNXg3hDcW3p5VLvEc9WYRVaU4qw8NitJsIWPF28v-jBbxNoTgoz2wmp1B5IyOllO-PGsq4v",
+                        "sizeBytes": 32998
+                    }
+                ],
+                "owner": "craig@lineagecoffee.com",
+                "headers": {
+                    "messageId": "<!&!AAAAAAAAAAAYAAAAAAAAAPdmjfuboc1Ar+vxfdAmbwDCgAAAEAAAANcFz/KtYLtPgrCDT4u1VAgBAAAAAA==@durbanpackaging.co.za>",
+                    "date": "2023-09-08T09:25:39+02:00",
+                    "references": [
+                        "<CAFtvyM1xp1sepiY3MBkLjNikFC0eHeOL-uHh4Qp8Mv+Ea+whWA@mail.gmail.com>",
+                        "<!&!AAAAAAAAAAAYAAAAAAAAAPdmjfuboc1Ar+vxfdAmbwDCgAAAEAAAAPaH1IoMY/1HkVd6+0zujnQBAAAAAA==@durbanpackaging.co.za>",
+                        "<CAFtvyM2GrCBM-usToLc7y3_=NSiavP=1c+19mS6Hu4cymNmZsw@mail.gmail.com>"
+                    ],
+                    "subject": "DBN PACKAGING POP Required",
+                    "inReplyTo": "",
+                    "from": [
+                        {
+                            "email": "info@durbanpackaging.co.za",
+                            "name": "Durban Packaging"
+                        }
+                    ],
+                    "bcc": [],
+                    "to": [
+                        {
+                            "email": "office@lineagecoffee.com",
+                            "name": "Tegan Botha"
+                        }
+                    ],
+                    "cc": [
+                        {
+                            "email": "craig@lineagecoffee.com",
+                            "name": ""
+                        }
+                    ]
+                },
+                "createdAt": "2025-09-08 19:48:42.416247+00:00",
+                "labelNames": [
+                    "IMPORTANT",
+                    "CATEGORY_PERSONAL",
+                    "INBOX"
+                ],
+                "bodyHtml": "",
+                "threadId": "18a73aec13f59d2a",
+                "bodyText": "Morning Tegan\r\n\r\n \r\n\r\nI hope you are well,\r\n\r\n \r\n\r\nHappy Friday, just checking if payment was done please? If so please send POP or advise as to when payment will be made.\r\n\r\n \r\n\r\nThank you,\r\n\r\n \r\n\r\nKind Regards,\r\n\r\nEmily Lumley\r\n\r\nEmail signature B2A - new\r\n\r\n \r\n\r\n \r\n\r\nFrom: Durban Packaging [mailto:info@durbanpackaging.co.za] \r\nSent: 06 September 2023 10:49 AM\r\nTo: 'Tegan Botha'\r\nSubject: RE: Order for Lineage Coffee\r\n\r\n \r\n\r\nThank you so much\r\n\r\n \r\n\r\nKind Regards,\r\n\r\nEmily Lumley\r\n\r\nEmail signature B2A - new\r\n\r\n \r\n\r\n \r\n\r\nFrom: Tegan Botha [mailto:office@lineagecoffee.com] \r\nSent: 06 September 2023 10:41 AM\r\nTo: Durban Packaging\r\nSubject: Re: Order for Lineage Coffee\r\n\r\n \r\n\r\nHi Emily,\r\n\r\n \r\n\r\nI will chat with Craig and get back to you.\r\n\r\n \r\n\r\nKind regards\r\n\r\nTegan\r\n\r\n \r\n\r\nOn Wed, Sep 6, 2023 at 10:32 AM Durban Packaging <info@durbanpackaging.co.za> wrote:\r\n\r\nHi Tegan\r\n\r\n \r\n\r\nThank you for the order, kindly note the account is still in arrears, we can only deliver once the account is up to date.\r\n\r\n \r\n\r\nPlease can you advise on payment?\r\n\r\n \r\n\r\nKind Regards,\r\n\r\nEmily Lumley\r\n\r\nEmail signature B2A - new\r\n\r\n \r\n\r\n \r\n\r\nFrom: Tegan Botha [mailto:office@lineagecoffee.com] \r\nSent: 06 September 2023 10:15 AM\r\nTo: Durban Packaging\r\nSubject: Order for Lineage Coffee\r\n\r\n \r\n\r\nGood morning,\r\n\r\n \r\n\r\nTrust you are well.\r\n\r\n \r\n\r\nPlease can I place an order for 2x boxes of 500 brown 1kg coffee bags.\r\n\r\n \r\n\r\nThank you\r\n\r\nKind regards\r\n\r\nTegan"
+            }
+        },
+        {
+            "id": "18a73c48952f9809",
+            "data": {
+                "messageId": "18a73c48952f9809",
+                "internalDate": "1694159373000",
+                "historyId": "1854783",
+                "labelIds": [
+                    "UNREAD",
+                    "IMPORTANT",
+                    "CATEGORY_PERSONAL",
+                    "INBOX"
+                ],
+                "snippet": "Hi Zapper Support, Trust all is well. ​ Thank you. We have confirmed the details is correct. You may close this ticket. ​ Kind regards On Mon, 4 Sep at 6:28 PM , Zapper Support &lt;itdesk@sdp605527938.",
+                "attachments": [],
+                "owner": "dom@lineagecoffee.com",
+                "headers": {
+                    "messageId": "<64fad20db5b62_1f22b1cc2dcf014681986e.sidekiq-frequent-fd-poduseast1-free-blue-78f668869-g8ztm@email.freshdesk.com>",
+                    "date": "2023-09-08T07:49:33Z",
+                    "references": [
+                        "<18a502753ec.26df98e42059436.3287615544670317341@sdp605527938.zm.sdpondemand.com>,",
+                        "<18a50197aae.6a69fed72086267.2985336647238202305@sdp605527938.zm.sdpondemand.com>,",
+                        "<7D092C0F-372F-4E3B-B8A6-F74D9D5DF2A8@lineagecoffee.com>"
+                    ],
+                    "subject": "Re: Lineage Coffee - Zapper - [Request ID :##189070##]",
+                    "inReplyTo": "<18a502753ec.26df98e42059436.3287615544670317341@sdp605527938.zm.sdpondemand.com>",
+                    "from": [
+                        {
+                            "email": "support@cloudone.mobi",
+                            "name": "Jasey John"
+                        }
+                    ],
+                    "bcc": [],
+                    "to": [
+                        {
+                            "email": "itdesk@sdp605527938.zm.sdpondemand.com",
+                            "name": ""
+                        }
+                    ],
+                    "cc": [
+                        {
+                            "email": "dom@lineagecoffee.com",
+                            "name": ""
+                        }
+                    ]
+                },
+                "createdAt": "2025-09-08 19:37:06.789198+00:00",
+                "labelNames": [
+                    "UNREAD",
+                    "IMPORTANT",
+                    "CATEGORY_PERSONAL",
+                    "INBOX"
+                ],
+                "bodyHtml": "",
+                "threadId": "18a6101529dd2bf2",
+                "bodyText": "Hi Zapper Support,  Trust all is well.   ​   Thank you. We have confirmed the details is correct. You may close this ticket.  ​   Kind regards             \r\n                           \r\n                            On\r\n                            Mon, 4 Sep at  6:28 PM\r\n                            ,  Zapper Support <itdesk@sdp605527938.zm.sdpondemand.com>  wrote:\r\n                             Hi Tallorder,  \r\n \r\n   \r\n All is well., Thanks. \r\n \r\n   \r\n \r\nKind Regards, \r\n \r\n \r\nRegan Bruce - Zapper Support Team  \r\n \r\n   \r\n \r\n \r\n \r\n    \r\n  \r\n \r\n \r\n Hi Zapper Support, \r\n \r\n   \r\n Trust all is well. \r\n \r\n \r\n ​ \r\n \r\n Thank you. \r\n \r\n ​ \r\n \r\n Kind regards \r\n \r\n \r\n \r\n \r\n     \r\n     \r\n  \r\n On\r\n                            Fri, 1 Sep at 11:51 AM  \r\n \r\n ,  Zapper Support <itdesk@sdp605527938.zm.sdpondemand.com>  wrote:  \r\n \r\n \r\n Good Day Dominique \r\n \r\n   \r\n \r\nThank you for contacting Zapper Support. I can confirm the below details are correct for this account.  \r\n \r\n   \r\n \r\nMerchant API Key: 49464df17c6046e7abeeb67a0265f17b  \r\n \r\n \r\n \r\n \r\n \r\nMerchant ID: 10977 \r\n \r\n \r\n \r\n \r\n \r\nSite ID: 9640 \r\n \r\n   \r\n \r\nShould you have any further queries you are more than welcome to respond to this email. \r\n \r\n   \r\n \r\nKind Regards, \r\n \r\n \r\nRegan Bruce  - Zapper Support Team  \r\n \r\n   \r\n \r\n \r\n \r\n    \r\n \r\n Hi.  \r\n \r\n   \r\n Please confirm our Merchant API Key and Merchant ID for Lineage Coffee Nottingham Road.  \r\n \r\n   \r\n Regards,  \r\n \r\n Dominique Marot  \r\n \r\n LINEAGE COFFEE NOTTINGHAM ROAD  \r\n \r\n This email, together with any attachments, is for the exclusive and confidential use of the addressee(s). Any other distribution, use or reproduction without the sender's prior consent is unauthorised and strictly prohibited. If you have received this message in error, please notify the sender by email immediately and delete the message from your computer without making any copies.  \r\n \r\n \r\n   \r\n \r\n \r\n   \r\n \r\n   \r\n   \r\n \r\n   \r\n   \r\n   \r\n\r\n  \r\n \r\n  \r\n \r\n  \r\nRegan Bruce \r\n  \r\n  \r\nZapper\r\n    Support \r\n  \r\n   \r\n  \r\nregan.bruce@zapper.com \r\n  \r\n  \r\nSupport    +27 87 150 1001 \r\n  \r\n   \r\n  \r\n  \r\n  \r\n \r\n  \r\nAdvance Notice of Leave: \r\n  \r\n\r\n   \r\n \r\n  \r\n \r\n \r\nTallOrderPOS Support powered by Freshdesk 59997:1001133 \r\n \r\n  \r\n   \r\n \r\n \r\n   \r\n \r\n   \r\n   \r\n   \r\n\r\n  \r\n \r\n  \r\n \r\n  \r\nRegan Bruce \r\n  \r\n  \r\nZapper\r\n    Support \r\n  \r\n   \r\n  \r\nregan.bruce@zapper.com \r\n  \r\n  \r\nSupport    +27 87 150 1001 \r\n  \r\n   \r\n  \r\n  \r\n  \r\n \r\n  \r\nAdvance Notice of Leave:"
+            }
+        }
+    ],
+    "email_search_index": [
+        {
+            "id": "18a7374da2f64c3d",
+            "data": {
+                "toPeople": [
+                    "coffee"
+                ],
+                "messageId": "18a7374da2f64c3d",
+                "subject": "New order from More at the Gallery",
+                "isImportant": false,
+                "snippet": "Order Date: Order from: Email: daniela@kwingin.co.za Cell: Order: 30x Fingerprint Beans 1kg 8X250g Decaf Espresso Ground 1x Cleaning Agent Additional information: Please let me know if any amount will",
+                "allPeople": [
+                    "coffee"
+                ],
+                "isInternal": true,
+                "attachmentTypes": [],
+                "labelNames": [
+                    "UNREAD",
+                    "SENT",
+                    "INBOX"
+                ],
+                "allEmails": [
+                    "coffee@lineagecoffee.com"
+                ],
+                "sentAt": "2023-09-08 06:22:32+00:00",
+                "bodySearchable": "New order from More at the Gallery Order Date: \n\nOrder from: \nEmail: daniela@kwingin.co.za\nCell: \n\nOrder: \n30x Fingerprint Beans 1kg\n8X250g Decaf Espresso Ground\n1x Cleaning Agent\n\n\nAdditional information:\nPlease let me know if any amount will be ready sooner. We are all out again. We\ncan collect a emergency supply and follow up with balance of order when ready.\n\nShipping option: Collect\n___ __ Order Date: Order from: Email: daniela@kwingin.co.za Cell: Order: 30x Fingerprint Beans 1kg 8X250g Decaf Espresso Ground 1x Cleaning Agent Additional information: Please let me know if any amount will",
+                "fromPerson": "coffee",
+                "isUnread": true,
+                "searchTerms": [
+                    "email",
+                    "kwingin",
+                    "fingerprint",
+                    "gallery",
+                    "30x",
+                    "ground",
+                    "information",
+                    "cleaning",
+                    "date",
+                    "please",
+                    "additional",
+                    "daniela",
+                    "espresso",
+                    "cell",
+                    "decaf",
+                    "8x250g",
+                    "agent",
+                    "order",
+                    "1kg",
+                    "coffee",
+                    "beans"
+                ],
+                "bodyPreview": "Order Date: \n\nOrder from: \nEmail: daniela@kwingin.co.za\nCell: \n\nOrder: \n30x Fingerprint Beans 1kg\n8X250g Decaf Espresso Ground\n1x Cleaning Agent\n\n\nAdditional information:\nPlease let me know if any amount will be ready sooner. We are all out again. We\ncan collect a emergency supply and follow up with",
+                "hasExternal": false,
+                "fromFull": "coffee@lineagecoffee.com",
+                "fromEmail": "coffee@lineagecoffee.com",
+                "createdAt": "2025-09-08 19:40:53.027597+00:00",
+                "hasAttachments": false,
+                "owner": "Mark@lineagecoffee.com",
+                "threadId": "18a7374da2f64c3d",
+                "isStarred": false,
+                "threadSubject": "New order from More at the Gallery",
+                "toEmails": [
+                    "coffee@lineagecoffee.com"
+                ]
+            }
+        },
+        {
+            "id": "18a73aec13f59d2a",
+            "data": {
+                "toPeople": [
+                    "tegan"
+                ],
+                "messageId": "18a73aec13f59d2a",
+                "subject": "DBN PACKAGING POP Required",
+                "isImportant": true,
+                "snippet": "Morning Tegan I hope you are well, Happy Friday, just checking if payment was done please? If so please send POP or advise as to when payment will be made. Thank you, Kind Regards, Emily Lumley From:",
+                "allPeople": [
+                    "craig",
+                    "info",
+                    "office"
+                ],
+                "isInternal": false,
+                "attachmentTypes": [
+                    "image"
+                ],
+                "labelNames": [
+                    "IMPORTANT",
+                    "CATEGORY_PERSONAL",
+                    "INBOX"
+                ],
+                "allEmails": [
+                    "craig@lineagecoffee.com",
+                    "info@durbanpackaging.co.za",
+                    "office@lineagecoffee.com"
+                ],
+                "sentAt": "2023-09-08 07:25:39+00:00",
+                "bodySearchable": "DBN PACKAGING POP Required Morning Tegan\r\n\r\n \r\n\r\nI hope you are well,\r\n\r\n \r\n\r\nHappy Friday, just checking if payment was done please? If so please send POP or advise as to when payment will be made.\r\n\r\n \r\n\r\nThank you,\r\n\r\n \r\n\r\nKind Regards,\r\n\r\nEmily Lumley\r\n\r\nEmail signature B2A - new\r\n\r\n \r\n\r\n \r\n\r\nFrom: Durban Packaging [mailto:info@durbanpackaging.co.za] \r\nSent: 06 September 2023 10:49 AM\r\nTo: 'Tegan Botha'\r\nSubject: RE: Order for Lineage Coffee\r\n\r\n \r\n\r\nThank you so much\r\n\r\n \r\n\r\nKind Regards,\r\n\r\nEmily Lumley\r\n\r\nEmail signature B2A - new\r\n\r\n \r\n\r\n \r\n\r\nFrom: Tegan Botha [mailto:office@lineagecoffee.com] \r\nSent: 06 September 2023 10:41 AM\r\nTo: Durban Packaging\r\nSubject: Re: Order for Lineage Coffee\r\n\r\n \r\n\r\nHi Emily,\r\n\r\n \r\n\r\nI will chat with Craig and get back to you.\r\n\r\n \r\n\r\nKind regards\r\n\r\nTegan\r\n\r\n \r\n\r\nOn Wed, Sep 6, 2023 at 10:32 AM Durban Packaging <info@durbanpackaging.co.za> wrote:\r\n\r\nHi Tegan\r\n\r\n \r\n\r\nThank you for the order, kindly note the account is still in arrears, we can only deliver once the account is up to date.\r\n\r\n \r\n\r\nPlease can you advise on payment?\r\n\r\n \r\n\r\nKind Regards,\r\n\r\nEmily Lumley\r\n\r\nEmail signature B2A - new\r\n\r\n \r\n\r\n \r\n\r\nFrom: Tegan Botha [mailto:office@lineagecoffee.com] \r\nSent: 06 September 2023 10:15 AM\r\nTo: Durban Packaging\r\nSubject: Order for Lineage Coffee\r\n\r\n \r\n\r\nGood morning,\r\n\r\n \r\n\r\nTrust you are well.\r\n\r\n \r\n\r\nPlease can I place an order for 2x boxes of 500 brown 1kg coffee bags.\r\n\r\n \r\n\r\nThank you\r\n\r\nKind regards\r\n\r\nTegan Morning Tegan I hope you are well, Happy Friday, just checking if payment was done please? If so please send POP or advise as to when payment will be made. Thank you, Kind Regards, Emily Lumley From:",
+                "fromPerson": "durban",
+                "isUnread": false,
+                "searchTerms": [
+                    "send",
+                    "checking",
+                    "payment",
+                    "info",
+                    "made",
+                    "kind",
+                    "packaging",
+                    "please",
+                    "craig",
+                    "advise",
+                    "well",
+                    "office",
+                    "pop",
+                    "morning",
+                    "regards",
+                    "friday",
+                    "thank",
+                    "dbn",
+                    "required",
+                    "happy",
+                    "hope",
+                    "tegan",
+                    "done"
+                ],
+                "bodyPreview": "Morning Tegan\r\n\r\n \r\n\r\nI hope you are well,\r\n\r\n \r\n\r\nHappy Friday, just checking if payment was done please? If so please send POP or advise as to when payment will be made.\r\n\r\n \r\n\r\nThank you,\r\n\r\n \r\n\r\nKind Regards,\r\n\r\nEmily Lumley\r\n\r\nEmail signature B2A - new\r\n\r\n \r\n\r\n \r\n\r\nFrom: Durban Packaging [mailt",
+                "hasExternal": true,
+                "fromFull": "Durban Packaging <info@durbanpackaging.co.za>",
+                "fromEmail": "info@durbanpackaging.co.za",
+                "createdAt": "2025-09-08 19:48:42.416227+00:00",
+                "hasAttachments": true,
+                "owner": "craig@lineagecoffee.com",
+                "threadId": "18a73aec13f59d2a",
+                "isStarred": false,
+                "threadSubject": "DBN PACKAGING POP Required",
+                "toEmails": [
+                    "office@lineagecoffee.com"
+                ]
+            }
+        },
+        {
+            "id": "18a73c48952f9809",
+            "data": {
+                "toPeople": [
+                    "itdesk"
+                ],
+                "messageId": "18a73c48952f9809",
+                "subject": "Re: Lineage Coffee - Zapper - [Request ID :##189070##]",
+                "isImportant": true,
+                "snippet": "Hi Zapper Support, Trust all is well. ​ Thank you. We have confirmed the details is correct. You may close this ticket. ​ Kind regards On Mon, 4 Sep at 6:28 PM , Zapper Support &lt;itdesk@sdp605527938.",
+                "allPeople": [
+                    "dom",
+                    "itdesk",
+                    "support"
+                ],
+                "isInternal": false,
+                "attachmentTypes": [],
+                "labelNames": [
+                    "UNREAD",
+                    "IMPORTANT",
+                    "CATEGORY_PERSONAL",
+                    "INBOX"
+                ],
+                "allEmails": [
+                    "dom@lineagecoffee.com",
+                    "itdesk@sdp605527938.zm.sdpondemand.com",
+                    "support@cloudone.mobi"
+                ],
+                "sentAt": "2023-09-08 07:49:33+00:00",
+                "bodySearchable": "Re: Lineage Coffee - Zapper - [Request ID :##189070##] Hi Zapper Support,  Trust all is well.   ​   Thank you. We have confirmed the details is correct. You may close this ticket.  ​   Kind regards             \r\n                           \r\n                            On\r\n                            Mon, 4 Sep at  6:28 PM\r\n                            ,  Zapper Support <itdesk@sdp605527938.zm.sdpondemand.com>  wrote:\r\n                             Hi Tallorder,  \r\n \r\n   \r\n All is well., Thanks. \r\n \r\n   \r\n \r\nKind Regards, \r\n \r\n \r\nRegan Bruce - Zapper Support Team  \r\n \r\n   \r\n \r\n \r\n \r\n    \r\n  \r\n \r\n \r\n Hi Zapper Support, \r\n \r\n   \r\n Trust all is well. \r\n \r\n \r\n ​ \r\n \r\n Thank you. \r\n \r\n ​ \r\n \r\n Kind regards \r\n \r\n \r\n \r\n \r\n     \r\n     \r\n  \r\n On\r\n                            Fri, 1 Sep at 11:51 AM  \r\n \r\n ,  Zapper Support <itdesk@sdp605527938.zm.sdpondemand.com>  wrote:  \r\n \r\n \r\n Good Day Dominique \r\n \r\n   \r\n \r\nThank you for contacting Zapper Support. I can confirm the below details are correct for this account.  \r\n \r\n   \r\n \r\nMerchant API Key: 49464df17c6046e7abeeb67a0265f17b  \r\n \r\n \r\n \r\n \r\n \r\nMerchant ID: 10977 \r\n \r\n \r\n \r\n \r\n \r\nSite ID: 9640 \r\n \r\n   \r\n \r\nShould you have any further queries you are more than welcome to respond to this email. \r\n \r\n   \r\n \r\nKind Regards, \r\n \r\n \r\nRegan Bruce  - Zapper Support Team  \r\n \r\n   \r\n \r\n \r\n \r\n    \r\n \r\n Hi.  \r\n \r\n   \r\n Please confirm our Merchant API Key and Merchant ID for Lineage Coffee Nottingham Road.  \r\n \r\n   \r\n Regards,  \r\n \r\n Dominique Marot  \r\n \r\n LINEAGE COFFEE NOTTINGHAM ROAD  \r\n \r\n This email, together with any attachments, is for the exclusive and confidential use of the addressee(s). Any other distribution, use or reproduction without the sender's prior consent is unauthorised and strictly prohibited. If you have received this message in error, please notify the sender by email immediately and delete the message from your computer without making any copies.  \r\n \r\n \r\n   \r\n \r\n \r\n   \r\n \r\n   \r\n   \r\n \r\n   \r\n   \r\n   \r\n\r\n  \r\n \r\n  \r\n \r\n ",
+                "fromPerson": "jasey",
+                "isUnread": true,
+                "searchTerms": [
+                    "trust",
+                    "details",
+                    "mon",
+                    "zapper",
+                    "kind",
+                    "lineage",
+                    "itdesk",
+                    "confirmed",
+                    "ticket",
+                    "close",
+                    "well",
+                    "request",
+                    "dom",
+                    "sdpondemand",
+                    "regards",
+                    "support",
+                    "thank",
+                    "correct",
+                    "coffee",
+                    "sdp605527938",
+                    "sep"
+                ],
+                "bodyPreview": "Hi Zapper Support,  Trust all is well.   ​   Thank you. We have confirmed the details is correct. You may close this ticket.  ​   Kind regards             \r\n                           \r\n                            On\r\n                            Mon, 4 Sep at  6:28 PM\r\n                            , ",
+                "hasExternal": true,
+                "fromFull": "Jasey John <support@cloudone.mobi>",
+                "fromEmail": "support@cloudone.mobi",
+                "createdAt": "2025-09-08 19:37:06.789172+00:00",
+                "hasAttachments": false,
+                "owner": "dom@lineagecoffee.com",
+                "threadId": "18a6101529dd2bf2",
+                "isStarred": false,
+                "threadSubject": "Lineage Coffee - Zapper - [Request ID :##189070##]",
+                "toEmails": [
+                    "itdesk@sdp605527938.zm.sdpondemand.com"
+                ]
+            }
+        }
+    ]
+}
